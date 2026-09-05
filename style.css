@@ -706,44 +706,91 @@ body {
   position:relative;
   width:clamp(180px,69vw,350px)
 }
-.scroll {
-  margin-top:clamp(10px,6.6vw,40px);
-  margin-bottom:clamp(10px,5.3vw,30px)
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 18px auto 10px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 10;
+  position: relative;
+  width: max-content;
 }
-.mouse {
-  width:clamp(24px,9vw,44px);
-  height:clamp(40px,15vw,70px);
-  border:2px solid #9b7150;
-  border-radius:30px;
-  position:relative;
-  margin:auto
+.scroll-indicator:hover {
+  transform: translateY(-2px);
 }
-.mouse:before {
-  content:"";
-  position:absolute;
-  width:clamp(4px,1.6vw,8px);
-  height:clamp(6px,2.6vw,12px);
-  background:#9b7150;
-  left:50%;
-  top:clamp(5px,2.6vw,15px);
-  transform:translate(-50%);
-  border-radius:20px;
-  animation:scroll 2s infinite
+.scroll-indicator-text {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: clamp(0.85rem, 3.4vw, 1rem);
+  font-weight: 700;
+  color: #5b2607;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+  animation: scrollTextGlow 2.5s ease-in-out infinite;
 }
-@media(min-width:381px)and (max-width:480px) {
-  .pillar {
-  height:86vh
+.scroll-indicator-mouse {
+  width: 24px;
+  height: 38px;
+  border: 2px solid #7a2f0c;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+  background: rgba(255, 244, 225, 0.4);
+  box-shadow: 0 4px 12px rgba(91, 38, 7, 0.15), inset 0 0 6px rgba(255, 215, 120, 0.5);
 }
+.scroll-indicator-wheel {
+  width: 4px;
+  height: 8px;
+  background: #7a2f0c;
+  border-radius: 3px;
+  animation: mouseWheel 1.8s ease-in-out infinite;
 }
-@keyframes scroll {
+.scroll-indicator-chevron {
+  color: #7a2f0c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: chevronBounce 1.8s ease-in-out infinite;
+}
+@keyframes mouseWheel {
   0% {
-  opacity:1;
-  top:clamp(5px,2.6vw,15px)
+    transform: translateY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(12px);
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
 }
-to {
-  opacity:0;
-  top:clamp(18px,7.4vw,35px)
+@keyframes chevronBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
 }
+@keyframes scrollTextGlow {
+  0%, 100% {
+    color: #5b2607;
+    text-shadow: 0 0 6px rgba(255, 215, 120, 0.4);
+  }
+  50% {
+    color: #8b3a0c;
+    text-shadow: 0 0 14px rgba(255, 200, 80, 0.85);
+  }
 }
 .placeholder {
   background:radial-gradient(circle at top center,rgba(255,223,170,.15) 0%,transparent 40%),radial-gradient(circle at bottom,rgba(255,255,255,.04),transparent 60%),linear-gradient(180deg,#b36a2e,#a35d2b 45%,#8c4b22);

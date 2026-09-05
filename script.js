@@ -205,8 +205,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2500);
   }
 
-  curtainSealBtn.addEventListener('click', openCurtain);
+  // ==========================================
+  // 4. Scroll Down Indicator Interaction
+  // ==========================================
+  const scrollIndicator = document.getElementById('scrollIndicator');
+  if (scrollIndicator) {
+    scrollIndicator.addEventListener('click', () => {
+      const familySection = document.getElementById('familySection');
+      if (familySection) {
+        familySection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollBy({ top: window.innerHeight * 0.75, behavior: 'smooth' });
+      }
+    });
 
+    scrollIndicator.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollIndicator.click();
+      }
+    });
+
+    // Auto-fade indicator when user starts scrolling down
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 120) {
+        scrollIndicator.style.opacity = '0';
+        scrollIndicator.style.pointerEvents = 'none';
+      } else {
+        scrollIndicator.style.opacity = '1';
+        scrollIndicator.style.pointerEvents = 'auto';
+      }
+    }, { passive: true });
+  }
 
 
   // ==========================================
