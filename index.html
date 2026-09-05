@@ -123,6 +123,15 @@
           <img src="assets/murti-DogDNfqS.webp" alt="Lord Ganesha" class="murti" loading="eager" fetchpriority="high" />
         </div>
 
+        <!-- Dynamic Personalized Guest Banner (shown when URL has ?guest= or ?to=) -->
+        <div class="personalized-guest-banner" id="personalizedGuestBanner" style="display: none;">
+          <div class="guest-banner-inner">
+            <span class="guest-salutation">॥ सस्नेह निमंत्रण ॥</span>
+            <h2 class="guest-name-text" id="guestNameDisplay">आदरणीय पाहुणे</h2>
+            <p class="guest-msg-text">आपणास व आपल्या परिवारास श्री साई गणेश मंडळाच्या गणेशोत्सवास उपस्थित राहण्याचे आग्रहाचे निमंत्रण !</p>
+          </div>
+        </div>
+
         <!-- Scroll Down Indicator -->
         <div class="scroll-indicator hero-anim-text-4" id="scrollIndicator" role="button" tabindex="0" aria-label="खाली स्क्रोल करा">
           <span class="scroll-indicator-text">॥ खाली स्क्रोल करा ॥</span>
@@ -137,7 +146,7 @@
         </div>
       </div>
 
-      <!-- Family Strip Seal under Hero -->
+      <!-- Family Strip Seal & Live Countdown under Hero -->
       <section class="family-strip hero-anim-text-5">
         <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="family-divider" />
         <div class="inviter-seal">
@@ -145,6 +154,59 @@
           <h2 class="seal-family-name">श्री साई गणेश मंडळ</h2>
           <p class="seal-message">आपणास व आपल्या परिवारास सस्नेह निमंत्रण !</p>
         </div>
+
+        <!-- Live Countdown Timer Widget -->
+        <div class="countdown-container" id="countdownContainer">
+          <div class="countdown-badge">
+            <img src="assets/lotus-C9mPCXs6.webp" alt="" class="countdown-lotus" />
+            <p class="countdown-title">॥ बाप्पाच्या आगमनाचे उरलेले क्षण ॥</p>
+            <img src="assets/lotus-C9mPCXs6.webp" alt="" class="countdown-lotus" />
+          </div>
+          <div class="countdown-grid">
+            <div class="countdown-card">
+              <span class="countdown-number" id="countdownDays">००</span>
+              <span class="countdown-label">दिवस</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-card">
+              <span class="countdown-number" id="countdownHours">००</span>
+              <span class="countdown-label">तास</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-card">
+              <span class="countdown-number" id="countdownMinutes">००</span>
+              <span class="countdown-label">मिनिटे</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-card">
+              <span class="countdown-number" id="countdownSeconds">००</span>
+              <span class="countdown-label">सेकंद</span>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="festive-action-pills">
+            <button type="button" class="action-pill-btn calendar-btn" id="addToCalendarBtn" title="Add event to Google Calendar">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/>
+              </svg>
+              <span>कॅलेंडरमध्ये नोंद करा</span>
+            </button>
+            <button type="button" class="action-pill-btn share-invite-btn" id="openInviteGeneratorBtn" title="Personalized WhatsApp Invitation">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 012.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 01-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/>
+              </svg>
+              <span>१-क्लिक व्हॉट्सअ‍ॅप आमंत्रण</span>
+            </button>
+            <button type="button" class="action-pill-btn aarti-btn" id="openAartiModalBtn" title="View Marathi Aarti & Stotras">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3z"/>
+              </svg>
+              <span>आरती व स्तोत्र संग्रह</span>
+            </button>
+          </div>
+        </div>
+
         <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="family-divider" />
       </section>
 
@@ -298,179 +360,7 @@
       <img src="assets/aarti-BmqCfmT2.webp" alt="" class="family-aarti-left" />
     </section>
 
-    <!-- Timeline Section (उत्सवाचा मंगल प्रवास) -->
-    <section class="utsav-section scroll-reveal" id="timelineSection">
-      <img src="assets/divider-1-CA7Shuxn.webp" alt="Divider" class="section-divider scroll-reveal-child" />
-      <p class="utsav-tag scroll-reveal-child"></p>
-      <h2 class="utsav-heading scroll-reveal-child">उत्सवाचा मंगल प्रवास</h2>
-      <p class="utsav-subtitle scroll-reveal-child">गणरायाच्या आगमनापासून विसर्जनापर्यंतच्या प्रत्येक मंगल क्षणाची रूपरेषा</p>
 
-      <div class="utsav-timeline scroll-reveal-child">
-        <img src="assets/lotus-C9mPCXs6.webp" alt="Lotus" class="timeline-lotus top-lotus" />
-
-        <!-- Event 1: मूर्ती स्थापना -->
-        <div class="timeline-row row-left">
-          <div class="timeline-node"></div>
-          <div class="utsav-tile" 
-               data-id="sthapana"
-               data-title="मूर्ती प्राणप्रतिष्ठापना"
-               data-label="प्रतिष्ठापना"
-               data-date="२७ ऑगस्ट २०२६"
-               data-time="सकाळी १०:०० वाजता"
-               data-place="उत्सव मंडप / मंदिर"
-               data-desc="गणरायाचे मंगल आगमन व श्री मूर्ती प्राणप्रतिष्ठापना सोहळा."
-               data-image="assets/sthapana-opt-po5HE-Wf.webp">
-            प्रतिष्ठापना
-          </div>
-        </div>
-
-        <!-- Event 2: सकाळची आरती -->
-        <div class="timeline-row row-right">
-          <div class="timeline-node"></div>
-          <div class="utsav-tile" 
-               data-id="sakali-aarti"
-               data-title="सकाळची महाआरती"
-               data-label="महाआरती"
-               data-date="दररोज"
-               data-time="सकाळी ०८:०० वाजता"
-               data-place="मुख्य सभागृह"
-               data-desc="सकाळची मंगल महाआरती व प्रसाद वितरण."
-               data-image="assets/aarti-opt-DAeVgRo3.webp">
-            महाआरती
-          </div>
-        </div>
-
-        <!-- Event 3: संध्याकाळची आरती -->
-        <div class="timeline-row row-left">
-          <div class="timeline-node"></div>
-          <div class="utsav-tile" 
-               data-id="sandhyakal-aarti"
-               data-title="सायंकाळची महाआरती"
-               data-label="दीपआरती"
-               data-date="दररोज"
-               data-time="सायंकाळी ०७:३० वाजता"
-               data-place="मुख्य सभागृह"
-               data-desc="दीपप्रज्वलन व सायंकालीन महाआरती सोहळा."
-               data-image="assets/aarti-opt-DAeVgRo3.webp">
-            दीपआरती
-          </div>
-        </div>
-
-        <!-- Event 4: सत्यनारायण पूजा -->
-        <div class="timeline-row row-right">
-          <div class="timeline-node"></div>
-          <div class="utsav-tile" 
-               data-id="satyanarayan-pooja"
-               data-title="सत्यनारायण महापूजा"
-               data-label="सत्यनारायण पूजा"
-               data-date="३० ऑगस्ट २०२६"
-               data-time="सकाळी १०:३० वाजता"
-               data-place="मुख्य सभागृह"
-               data-desc="श्री सत्यनारायण महापूजा व तीर्थप्रसाद."
-               data-image="assets/atharvshish-opt-BokKd3D3.webp">
-            सत्यनारायण पूजा
-          </div>
-        </div>
-
-        <!-- Event 5: महाप्रसाद -->
-        <div class="timeline-row row-left">
-          <div class="timeline-node"></div>
-          <div class="utsav-tile" 
-               data-id="mahaprasad"
-               data-title="भव्य महाप्रसाद"
-               data-label="महाप्रसाद"
-               data-date="३० ऑगस्ट २०२६"
-               data-time="रात्री ०८:३० वाजता"
-               data-place="महाप्रसाद कक्ष"
-               data-desc="महाप्रसाद वितरण व सहभोजनाचा आनंद घ्या."
-               data-image="assets/mahaprasad-opt-B_Zc2sef.webp">
-            महाप्रसाद
-          </div>
-        </div>
-
-        <!-- Event 6: सांस्कृतिक कार्यक्रम -->
-        <div class="timeline-row row-right">
-          <div class="timeline-node"></div>
-          <div class="utsav-tile" 
-               data-id="sanskritik-karyakram"
-               data-title="सांस्कृतिक कार्यक्रम"
-               data-label="कार्यक्रम"
-               data-date="३१ ऑगस्ट २०२६"
-               data-time="सायंकाळी ०६:०० वाजता"
-               data-place="उत्सव मंडप / सभागृह"
-               data-desc="सुश्राव्य भजन, कीर्तन व सांस्कृतिक कार्यक्रम."
-               data-image="assets/snehbhet-opt-CGz7vv-w.webp">
-            कार्यक्रम
-          </div>
-        </div>
-
-        <!-- Event 7: विसर्जन -->
-        <div class="timeline-row row-left">
-          <div class="timeline-node"></div>
-          <div class="utsav-tile" 
-               data-id="visarjan"
-               data-title="गणेश विसर्जन सोहळा"
-               data-label="विसर्जन"
-               data-date="०२ सप्टेंबर २०२६"
-               data-time="सायंकाळी ०५:०० वाजता"
-               data-place="विसर्जन मिरवणूक मार्ग"
-               data-desc="गणरायाला भावपूर्ण निरोप व भव्य विसर्जन मिरवणूक."
-               data-image="assets/visarjan-opt-Epp4xHxG.webp">
-            विसर्जन
-          </div>
-        </div>
-
-        <img src="assets/lotus-C9mPCXs6.webp" alt="Lotus" class="timeline-lotus bottom-lotus" />
-      </div>
-
-      <div class="timeline-tip scroll-reveal-child">
-        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="tip-divider" />
-        <div class="tip-pill">सविस्तर माहितीसाठी स्पर्श करा</div>
-      </div>
-    </section>
-
-    <!-- Timeline Event Details Modal -->
-    <div class="utsav-modal" id="timelineModal" aria-hidden="true">
-      <div class="modal-card">
-        <button class="close-modal" id="modalCloseBtn" type="button" aria-label="Close modal">✕</button>
-        <h3 class="modal-title" id="modalTitle">मूर्ती प्राणप्रतिष्ठापना</h3>
-        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="modal-divider" />
-
-        <div class="modal-murti-wrapper">
-          <div class="murti-glow"></div>
-          <img src="assets/sthapana-opt-po5HE-Wf.webp" alt="Event Image" class="modal-murti" id="modalMurtiImg" style="object-fit: contain;" />
-        </div>
-
-        <div class="premium-info-rows">
-          <div class="info-row">
-            <img src="assets/diva2-Cj74hIfe.webp" alt="" class="row-icon-img" />
-            <div class="row-text">
-              <span class="row-label">दिनांक</span>
-              <span class="modal-date" id="modalDate">२७ ऑगस्ट २०२६</span>
-            </div>
-          </div>
-          <div class="info-row">
-            <img src="assets/diva2-Cj74hIfe.webp" alt="" class="row-icon-img" />
-            <div class="row-text">
-              <span class="row-label">वेळ</span>
-              <span class="modal-time" id="modalTime">सकाळी १०:०० वाजता</span>
-            </div>
-          </div>
-          <div class="info-row">
-            <img src="assets/diva2-Cj74hIfe.webp" alt="" class="row-icon-img" />
-            <div class="row-text">
-              <span class="row-label">स्थळ</span>
-              <span class="modal-place" id="modalPlace">उत्सव मंडप / मंदिर</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal-description">
-          <p class="modal-desc" id="modalDesc">गणरायाचे मंगल आगमन व श्री मूर्ती प्राणप्रतिष्ठापना सोहळा.</p>
-        </div>
-        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="modal-divider bottom-divider" />
-      </div>
-    </div>
 
     <!-- Location Section (कार्यक्रम स्थळ) -->
     <section class="location-section scroll-reveal" id="locationSection">
@@ -498,7 +388,20 @@
         <div class="location-details">
           <h3>श्री साई गणेश मंडळ</h3>
           <p class="address-text">स्वामी रामानंद तीर्थ चौक, जुना मोंढा, नायगाव बाजार - ४३१७०९<br/><span style="font-size: 0.9em; opacity: 0.9; font-weight: 500;">Swami Ramanand Teerth Chowk, Juna Mondha, Naigaon Bazar - 431709</span></p>
-          <a class="new-maps-btn" href="https://www.google.com/maps/search/?api=1&query=Swami+Ramanand+Teerth+Chowk+Juna+Mondha+Naigaon+Bazar+431709" target="_blank" rel="noopener noreferrer" id="openMapsBtn">Open Maps</a>
+          <div class="location-btn-row">
+            <a class="new-maps-btn directions-gps-btn" href="https://www.google.com/maps/dir/?api=1&destination=Swami+Ramanand+Teerth+Chowk+Juna+Mondha+Naigaon+Bazar+431709" target="_blank" rel="noopener noreferrer" id="getDirectionsBtn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M21.71 11.29l-9-9a1 1 0 00-1.42 0l-9 9a1 1 0 000 1.42l9 9a1 1 0 001.42 0l9-9a1 1 0 000-1.42zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/>
+              </svg>
+              <span>दिशा / GPS नेव्हिगेशन</span>
+            </a>
+            <a class="new-maps-btn" href="https://www.google.com/maps/search/?api=1&query=Swami+Ramanand+Teerth+Chowk+Juna+Mondha+Naigaon+Bazar+431709" target="_blank" rel="noopener noreferrer" id="openMapsBtn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/>
+              </svg>
+              <span>नकाशा पहा</span>
+            </a>
+          </div>
           <p class="footer-msg">
             <span>आपल्या सहकुटुंब उपस्थितीने</span><br />
             <span>उत्सवाची शोभा द्विगुणित होईल!</span>
@@ -537,34 +440,86 @@
       <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="gallery-small-divider scroll-reveal-child" />
       <p class="gallery-subtitle scroll-reveal-child">
         <span>गणरायाच्या स्वागतासाठी</span><br />
-        <span>भक्तीभावाने सजवलेले काही खास क्षण</span>
+        <span>भक्तीभावाने सजवलेले काही खास क्षण (फोटोंवर क्लिक करून मोठे पहा)</span>
       </p>
 
       <div class="gallery-grid scroll-reveal-child" id="galleryGrid">
         <!-- Feature Banner 1 -->
-        <div class="gallery-item large">
+        <div class="gallery-item large" data-index="0" data-src="assets/gallery-utsav-1.jpg" data-caption="॥ श्री साई गणेश मंडळ - भव्य आगमन सोहळा ॥">
           <img src="assets/gallery-utsav-1.jpg" alt="श्री साई गणेश मंडळ - भव्य आगमन" loading="eager" />
           <div class="gallery-overlay">॥ श्री साई गणेश मंडळ ॥</div>
         </div>
 
         <!-- Photo 2: Twin Bappa Idols -->
-        <div class="gallery-item">
+        <div class="gallery-item" data-index="1" data-src="assets/gallery-utsav-3.jpg" data-caption="गणेशोत्सव मनोहारी दर्शन">
           <img src="assets/gallery-utsav-3.jpg" alt="गणेशोत्सव दर्शन" loading="lazy" />
           <div class="gallery-overlay">गणेशोत्सव दर्शन</div>
         </div>
 
         <!-- Photo 3: Historical Pooja Photo -->
-        <div class="gallery-item">
+        <div class="gallery-item" data-index="2" data-src="assets/gallery-utsav-2.jpg" data-caption="मंगल महाआरती व पूजा सोहळा">
           <img src="assets/gallery-utsav-2.jpg" alt="मंगल आरती व पूजा" loading="lazy" />
           <div class="gallery-overlay">मंगल पूजा क्षण</div>
         </div>
 
         <!-- Photo 4: Committee Ceremony Photo -->
-        <div class="gallery-item large">
+        <div class="gallery-item large" data-index="3" data-src="assets/gallery-utsav-4.jpg" data-caption="मंडळ परिवार व कार्यकर्ते सोहळा">
           <img src="assets/gallery-utsav-4.jpg" alt="मंडळ परिवार सोहळा" loading="lazy" />
           <div class="gallery-overlay">मंडळ परिवार सोहळा</div>
         </div>
       </div>
+    </section>
+
+    <!-- Digital Wishes & RSVP Guestbook Section (सदिच्छा व उपस्थिती नोंद) -->
+    <section class="guestbook-section scroll-reveal" id="guestbookSection">
+      <img src="assets/divider-1-CA7Shuxn.webp" alt="Divider" class="guestbook-divider scroll-reveal-child" />
+      <h2 class="guestbook-heading scroll-reveal-child">सदिच्छा व उपस्थिती नोंद</h2>
+      <p class="guestbook-subtitle scroll-reveal-child">बाप्पाच्या चरणी व मंडळास आपल्या मंगलमय शुभेच्छा व उपस्थिती नोंदवा</p>
+
+      <div class="guestbook-container scroll-reveal-child">
+        <!-- Wishes Form -->
+        <div class="wishes-card">
+          <div class="wishes-card-header">
+            <img src="assets/lotus-C9mPCXs6.webp" alt="" class="wishes-lotus" />
+            <h3 class="wishes-card-title">॥ आपली सदिच्छा व्यक्त करा ॥</h3>
+            <img src="assets/lotus-C9mPCXs6.webp" alt="" class="wishes-lotus" />
+          </div>
+
+          <form id="wishesForm" class="wishes-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="wisherName" class="form-label">आपले पूर्ण नाव *</label>
+                <input type="text" id="wisherName" class="custom-input" placeholder="उदा. अमोल कुलकर्णी" required />
+              </div>
+              <div class="form-group">
+                <label for="wisherCity" class="form-label">गाव / शहर</label>
+                <input type="text" id="wisherCity" class="custom-input" placeholder="उदा. नायगाव / नांदेड" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="wisherMessage" class="form-label">शुभेच्छा संदेश *</label>
+              <textarea id="wisherMessage" class="custom-textarea" rows="3" placeholder="उदा. गणपती बाप्पा मोरया! आगमन सोहळ्यास आम्ही नक्की उपस्थित राहू..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary-action submit-wish-btn" id="submitWishBtn">
+              <span>सदिच्छा पाठवा</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Live Wishes Wall Feed -->
+        <div class="wishes-wall">
+          <div class="wall-header">
+            <img src="assets/lotus-C9mPCXs6.webp" alt="" class="feed-lotus" />
+            <span class="wall-title">भक्तांचे मंगल संदेश (Live Wishes)</span>
+            <img src="assets/lotus-C9mPCXs6.webp" alt="" class="feed-lotus" />
+          </div>
+          <div class="wishes-feed" id="wishesFeed">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="guestbook-divider bottom-divider scroll-reveal-child" />
     </section>
 
     <!-- Sacred Footer -->
@@ -595,6 +550,192 @@
         </div>
       </div>
     </footer>
+
+    <!-- Fullscreen Gallery Lightbox Modal -->
+    <div class="gallery-lightbox-modal" id="galleryLightboxModal" aria-hidden="true">
+      <div class="lightbox-overlay" id="lightboxOverlay"></div>
+      <div class="lightbox-container">
+        <button class="lightbox-close" id="lightboxCloseBtn" type="button" aria-label="Close Lightbox">✕</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrevBtn" type="button" aria-label="Previous image">❮</button>
+        <div class="lightbox-image-wrap">
+          <img src="" alt="Gallery Image" class="lightbox-main-img" id="lightboxMainImg" />
+          <div class="lightbox-caption-bar">
+            <span class="lightbox-caption" id="lightboxCaption"></span>
+          </div>
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightboxNextBtn" type="button" aria-label="Next image">❯</button>
+      </div>
+    </div>
+
+    <!-- Personalized WhatsApp Invite Generator Modal -->
+    <div class="utsav-modal" id="inviteGeneratorModal" aria-hidden="true">
+      <div class="modal-card invite-modal-card">
+        <button class="close-modal" id="closeInviteModalBtn" type="button" aria-label="Close modal">✕</button>
+        <h3 class="modal-title">॥ वैयक्तिक व्हॉट्सअ‍ॅप आमंत्रण ॥</h3>
+        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="modal-divider" />
+        
+        <p class="invite-modal-desc">पाहुण्यांचे नाव लिहून एका क्लिकवर त्यांच्या नावासह थेट व्हॉट्सअ‍ॅप आमंत्रण पाठवा:</p>
+
+        <div class="invite-input-wrap">
+          <label for="guestNameInput" class="invite-label">पाहुण्यांचे / परिवाराचे नाव:</label>
+          <input type="text" id="guestNameInput" class="custom-input" placeholder="उदा. श्री. रमेशजी जोशी / पाटील परिवार" />
+        </div>
+
+        <div class="invite-preview-box">
+          <span class="preview-tag">संदेश पूर्वावलोकन (Preview):</span>
+          <p class="preview-body" id="invitePreviewText">
+            ॥ श्री गणेशाय नमः ॥<br/>
+            <strong>सस्नेह निमंत्रण !</strong><br/>
+            श्री साई गणेश मंडळ, स्वामी रामानंद तीर्थ चौक, जुना मोंढा, नायगाव बाजार यांच्या गणेशोत्सवास आपण सपरिवार उपस्थित राहावे ही नम्र विनंती...
+          </p>
+        </div>
+
+        <button type="button" class="btn-primary-action whatsapp-action-btn" id="sendWhatsappInviteBtn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 012.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 01-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/>
+          </svg>
+          <span>व्हॉट्सअ‍ॅपवर पाठवा</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Aarti & Stotra Collection Modal -->
+    <div class="utsav-modal" id="aartiModal" aria-hidden="true">
+      <div class="modal-card aarti-modal-card">
+        <button class="close-modal" id="closeAartiModalBtn" type="button" aria-label="Close modal">✕</button>
+        <h3 class="modal-title">॥ आरती व स्तोत्र संग्रह ॥</h3>
+        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="modal-divider" />
+        
+        <!-- Navigation Tabs -->
+        <div class="aarti-tabs-nav" id="aartiTabsNav">
+          <button type="button" class="aarti-tab-btn active" data-tab="sukhkarta">सुखकर्ता दुखहर्ता</button>
+          <button type="button" class="aarti-tab-btn" data-tab="shendur">शेंदुर लाल चढायो</button>
+          <button type="button" class="aarti-tab-btn" data-tab="ghalin">घालीन लोटांगण</button>
+          <button type="button" class="aarti-tab-btn" data-tab="atharvashirsha">गणपती अथर्वशीर्ष</button>
+        </div>
+
+        <!-- Lyrics Container -->
+        <div class="aarti-lyrics-scroll-wrap">
+          <!-- 1. सुखकर्ता दुखहर्ता -->
+          <div class="aarti-lyrics-pane active" id="pane-sukhkarta">
+            <h4 class="lyrics-header">॥ श्री सुखकर्ता दुखहर्ता (आरती) ॥</h4>
+            <pre class="lyrics-pre">सुखकर्ता दुखहर्ता वार्ता विघ्नाची ।
+नुरवी पूर्वी प्रेम कृपा जयाची ।
+सर्वांगी सुंदर उटी शेंदुराची ।
+कंठी झळके माळ मुक्ताफळांची ॥ १ ॥
+
+जय देव जय देव जय मंगलमूर्ती ।
+दर्शनमात्रे मनकामना पुरती ॥ धृ. ॥
+
+रत्नखचित फरा तुज गौरीकुमरा ।
+चंदनाची उटी कुंकुमकेशरा ।
+हीरेजडित मुकुट शोभतो बरा ।
+रुणझुणती नूपुरे चरणी घागरिया ॥ २ ॥
+
+लंबोदर पीतांबर फणिवरबंधना ।
+सरळ सोंड वक्रतुंड त्रिनयना ।
+दास रामाचा वाट पाहे सदना ।
+संकटी पावावे निर्वाणी रक्षावे सुरवरवंदना ॥ ३ ॥
+
+जय देव जय देव जय मंगलमूर्ती ।
+दर्शनमात्रे मनकामना पुरती ॥</pre>
+          </div>
+
+          <!-- 2. शेंदुर लाल चढायो -->
+          <div class="aarti-lyrics-pane" id="pane-shendur">
+            <h4 class="lyrics-header">॥ शेंदुर लाल चढायो (आरती) ॥</h4>
+            <pre class="lyrics-pre">शेंदुर लाल चढायो चांगो हरकुंवर हीरा ।
+कंठ मणी बिराजे गळ मुक्तामाळा ।
+माथा छत्र बिराजे कांसे शेल्यांचा फेटा ।
+अष्टसिद्धी नवनीधी चरणी करिती सेवा ॥ १ ॥
+
+जय देव जय देव जय श्री मंगलमूर्ती ।
+दर्शनमात्रे मनकामना पुरती ॥ धृ. ॥
+
+सुरवर मुनिवर वंदित नतमस्तक चरणी ।
+जय गणेश जय गणेश आरती ओवाळू चरणी ।
+कौतिक पाहे शंकर उमा सुख साहे ।
+सिंदूर उधळित भक्तजन नामस्मरण गाहे ॥ २ ॥
+
+जय देव जय देव जय श्री मंगलमूर्ती ।
+दर्शनमात्रे मनकामना पुरती ॥</pre>
+          </div>
+
+          <!-- 3. घालीन लोटांगण -->
+          <div class="aarti-lyrics-pane" id="pane-ghalin">
+            <h4 class="lyrics-header">॥ घालीन लोटांगण (प्रार्थना) ॥</h4>
+            <pre class="lyrics-pre">घालीन लोटांगण वंदिन चरण ।
+डोळ्यांनी पाहीन रूप तुझें ।
+प्रेमें आलिंगिन आनंदें पूजिन ।
+भावें ओवाळीन म्हणे नामा ॥ १ ॥
+
+त्वमेव माता च पिता त्वमेव ।
+त्वमेव बन्धुश्च सखा त्वमेव ।
+त्वमेव विद्या द्रविणं त्वमेव ।
+त्वमेव सर्वं मम देवदेव ॥ २ ॥
+
+कायेन वाचा मनसेंद्रियैर्वा ।
+बुद्ध्यात्मना वा प्रकृतिस्वभावात् ।
+करोमि यद्यत् सकलं परस्मै ।
+नारायणायेति समर्पयामि ॥ ३ ॥
+
+अच्युतं केशवं रामनारायणं ।
+कृष्णदामोदरं वासुदेवं हरिम् ।
+श्रीधरं माधवं गोपिकावल्लभं ।
+जानकीनायकं रामचंद्रं भजे ॥ ४ ॥
+
+हरे राम हरे राम राम राम हरे हरे ।
+हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे ॥</pre>
+          </div>
+
+          <!-- 4. गणपती अथर्वशीर्ष -->
+          <div class="aarti-lyrics-pane" id="pane-atharvashirsha">
+            <h4 class="lyrics-header">॥ श्री गणपती अथर्वशीर्ष ॥</h4>
+            <pre class="lyrics-pre">ॐ नमस्ते गणपतये ।
+त्वमेव प्रत्यक्षं तत्त्वमसि ।
+त्वमेव केवलं कर्ताऽसि ।
+त्वमेव केवलं धर्ताऽसि ।
+त्वमेव केवलं हर्ताऽसि ।
+त्वमेव सर्वं खल्विदं ब्रह्मासि ।
+त्वं साक्षादात्माऽसि नित्यम् ॥ १ ॥
+
+ऋतं वच्मि । सत्यं वच्मि ॥ २ ॥
+
+अव त्वं मां । अव वक्तारं ।
+अव श्रोतारं । अव दातारं ।
+अव धातारं । अवानूचानमव शिष्यम् ।
+अव पश्चात्तात् । अव पुरस्तात् ।
+अवोत्तरात्तात् । अव दक्षिणात्तात् ।
+अव चोर्ध्वात्तात् । अवाधरात्तात् ।
+सर्वतो मां पाहि पाहि समन्तात् ॥ ३ ॥
+
+त्वं वाङ्मयस्त्वं चिन्मयः ।
+त्वमानन्दमयस्त्वं ब्रह्ममयः ।
+त्वं सच्चिदानन्दाऽद्वितीयोऽसि ।
+त्वं प्रत्यक्षं ब्रह्मासि ।
+त्वं ज्ञानमयो विज्ञानमयोऽसि ॥ ४ ॥
+
+सर्वं जगदिदं त्वत्तो जायते ।
+सर्वं जगदिदं त्वत्तस्तिष्ठति ।
+सर्वं जगदिदं त्वयि लयमेष्यति ।
+सर्वं जगदिदं त्वयि प्रत्येति ।
+त्वं भूमिरापोऽनलोऽनिलो नभः ।
+त्वं चत्वारि वाक्पदानि ॥ ५ ॥
+
+॥ ॐ गं गणपतये नमः ॥</pre>
+          </div>
+        </div>
+
+        <div class="aarti-modal-footer">
+          <button type="button" class="btn-copy-lyrics" id="copyLyricsBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+            </svg>
+            <span id="copyLyricsText">बोल (Lyrics) कॉपी करा</span>
+          </button>
+        </div>
+      </div>
+    </div>
 
   </div>
 

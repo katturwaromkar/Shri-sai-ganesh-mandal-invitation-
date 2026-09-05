@@ -1005,92 +1005,120 @@ to {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  justify-content: center;
+  gap: 36px;
   width: 100%;
-  max-width: 320px;
-  margin: 30px auto 40px;
+  max-width: 330px;
+  margin: 32px auto 45px;
   padding: 0 16px;
   box-sizing: border-box;
 }
 .family-card {
   position: relative;
   width: 100%;
-  max-width: 290px;
-  background: #f2dab3;
-  border-radius: 26px;
-  padding: 14px 14px 16px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3), 0 0 0 1.5px rgba(255, 212, 138, 0.35);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  max-width: 320px;
+  background: linear-gradient(160deg, #fffdf8 0%, #fcf3e3 45%, #f5dfbe 100%);
+  border: 1.5px solid #d4af37;
+  border-radius: 24px;
+  padding: 14px 14px 18px;
+  box-shadow: 
+    0 12px 30px rgba(50, 18, 4, 0.32),
+    0 4px 10px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 0 16px rgba(212, 175, 55, 0.15);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease;
   user-select: none;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
 .family-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.38), 0 0 0 2px rgba(255, 212, 138, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 
+    0 22px 45px rgba(50, 18, 4, 0.42),
+    0 0 24px rgba(230, 179, 90, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 0 20px rgba(212, 175, 55, 0.25);
+  border-color: #e6b35a;
 }
+/* Ensure 1 column on all screen sizes */
 @media (min-width: 640px) {
   .family-members-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 680px;
-    gap: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 340px;
+    gap: 36px;
   }
 }
 @media (min-width: 1024px) {
   .family-members-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 1100px;
-    gap: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 350px;
+    gap: 38px;
   }
 }
 .member-img {
   width: 100%;
   aspect-ratio: 3/4;
   object-fit: cover;
-  border-radius: 20px;
+  object-position: top center;
+  border-radius: 18px;
+  border: 2px solid #dfc083;
+  box-shadow: 0 4px 12px rgba(60, 22, 6, 0.2);
+  transition: transform 0.45s ease;
+  background-color: #2a1104;
+}
+.family-card:hover .member-img {
+  transform: scale(1.02);
 }
 .member-name {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 4px 10px;
+  gap: 10px;
+  padding: 14px 4px 6px;
+  position: relative;
+  z-index: 2;
 }
 .member-name img {
   width: 22px;
+  height: auto;
   flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(91, 38, 7, 0.25));
+  opacity: 0.9;
 }
 .member-text-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
   text-align: center;
 }
 .member-name-text {
   font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
-  font-size: clamp(1.15rem, 4.2vw, 1.35rem);
+  font-size: clamp(1.2rem, 4.4vw, 1.35rem);
   font-weight: 700;
-  color: #3e1602;
+  color: #3b1402;
   line-height: 1.25;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 .member-designation {
   display: inline-block;
   font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
-  font-size: clamp(0.78rem, 3.2vw, 0.88rem);
+  font-size: 0.82rem;
   font-weight: 600;
-  color: #7e3812;
-  background: linear-gradient(135deg, rgba(234, 215, 188, 0.9), rgba(217, 193, 160, 0.8));
-  border: 1px solid rgba(161, 79, 27, 0.35);
-  padding: 2px 14px;
+  color: #fff9e8;
+  background: linear-gradient(135deg, #8a2408 0%, #a8350d 50%, #6d1a04 100%);
+  border: 1px solid #dfb15b;
+  padding: 3px 16px;
   border-radius: 999px;
-  box-shadow: 0 2px 5px rgba(91, 38, 7, 0.1);
-  letter-spacing: 0.3px;
+  box-shadow: 0 2px 6px rgba(109, 26, 4, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.4px;
 }
 .family-bottom-text {
   color:#fff;
@@ -1147,21 +1175,22 @@ to {
   fill:#9a4e1a
 }
 .card-flower {
-  position:absolute;
-  top:-5px;
-  width:clamp(70px,20vw,120px);
-  filter:drop-shadow(0 6px 12px rgba(0,0,0,.4));
-  transform-origin:top center;
-  z-index:10;
-  pointer-events:none
+  position: absolute;
+  top: -10px;
+  width: clamp(55px, 14vw, 75px);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transform-origin: top center;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.9;
 }
 .card-flower.left {
-  left:-30px;
-  animation:gentleWaveLeft 4s ease-in-out infinite
+  left: -16px;
+  animation: gentleWaveLeft 4s ease-in-out infinite;
 }
 .card-flower.right {
-  right:-30px;
-  animation:gentleWaveRight 4s ease-in-out infinite
+  right: -16px;
+  animation: gentleWaveRight 4s ease-in-out infinite;
 }
 @keyframes gentleWaveLeft {
   0%,to {
@@ -2454,3 +2483,835 @@ to {
   margin-top:-90px
 }
 }
+
+/* ====================================================
+   1. Dynamic Personalized Guest Banner
+   ==================================================== */
+.personalized-guest-banner {
+  margin: 18px auto 10px;
+  width: 100%;
+  max-width: 360px;
+  padding: 2px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e6b35a, #8a2408, #ffd78a);
+  box-shadow: 0 10px 25px rgba(91, 38, 7, 0.25);
+  animation: bannerPulse 3.5s ease-in-out infinite;
+}
+
+.guest-banner-inner {
+  background: linear-gradient(165deg, #fffdf8, #fbf2e3);
+  padding: 16px 20px;
+  border-radius: 18px;
+  text-align: center;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.guest-salutation {
+  display: block;
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #8a2408;
+  letter-spacing: 0.5px;
+}
+
+.guest-name-text {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: clamp(1.3rem, 5vw, 1.6rem);
+  font-weight: 700;
+  color: #3e1602;
+  margin: 4px 0 6px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+.guest-msg-text {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #6d3913;
+  margin: 0;
+}
+
+@keyframes bannerPulse {
+  0%, 100% {
+    box-shadow: 0 8px 20px rgba(91, 38, 7, 0.2);
+  }
+  50% {
+    box-shadow: 0 12px 30px rgba(230, 179, 90, 0.45);
+  }
+}
+
+/* ====================================================
+   2. Live Countdown Timer Widget
+   ==================================================== */
+.countdown-container {
+  margin: 28px auto 15px;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.countdown-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 248, 235, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  padding: 6px 18px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(91, 38, 7, 0.1);
+}
+
+.countdown-lotus {
+  width: 18px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.countdown-title {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: clamp(0.85rem, 3.4vw, 1.02rem);
+  font-weight: 700;
+  color: #5b2607;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.countdown-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0 8px;
+}
+
+.countdown-card {
+  flex: 1;
+  max-width: 80px;
+  background: linear-gradient(150deg, #ffffff 0%, #fff7eb 50%, #fae6c6 100%);
+  border: 1.5px solid #d4af37;
+  border-radius: 16px;
+  padding: 10px 4px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(60, 22, 6, 0.2), inset 0 1px 0 #fff;
+  transition: transform 0.3s ease;
+}
+
+.countdown-card:hover {
+  transform: translateY(-3px);
+  border-color: #8a2408;
+}
+
+.countdown-number {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: clamp(1.4rem, 5.5vw, 1.85rem);
+  font-weight: 700;
+  color: #7a200a;
+  line-height: 1.1;
+}
+
+.countdown-label {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+  font-weight: 600;
+  color: #65401a;
+  margin-top: 2px;
+}
+
+.countdown-sep {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8a2408;
+  margin-top: -12px;
+  animation: sepBlink 1s ease-in-out infinite;
+}
+
+@keyframes sepBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ====================================================
+   3. Festive Quick Action Pills
+   ==================================================== */
+.festive-action-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  width: 100%;
+}
+
+.action-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: clamp(0.82rem, 3.2vw, 0.92rem);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(60, 22, 6, 0.18);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.action-pill-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(60, 22, 6, 0.28);
+}
+
+.action-pill-btn.calendar-btn {
+  background: linear-gradient(135deg, #7a200a, #9e2a0f);
+  color: #fff9e6;
+  border-color: #dfb15b;
+}
+
+.action-pill-btn.calendar-btn:hover {
+  background: linear-gradient(135deg, #8f260d, #b83314);
+}
+
+.action-pill-btn.share-invite-btn {
+  background: linear-gradient(135deg, #128C7E, #25D366);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.action-pill-btn.share-invite-btn:hover {
+  background: linear-gradient(135deg, #15a090, #2ae06d);
+}
+
+.action-pill-btn.aarti-btn {
+  background: linear-gradient(135deg, #d49f3e, #b57a1e);
+  color: #3b1402;
+  border-color: #ffd88a;
+}
+
+.action-pill-btn.aarti-btn:hover {
+  background: linear-gradient(135deg, #e6b24d, #c98823);
+  color: #2a0c00;
+}
+
+/* ====================================================
+   4. Location Buttons Row
+   ==================================================== */
+.location-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0 10px;
+}
+
+.new-maps-btn.directions-gps-btn {
+  background: linear-gradient(135deg, #8a2408, #b83314);
+  color: #fff8e8;
+  border: 1px solid #dfb15b;
+}
+
+.new-maps-btn.directions-gps-btn:hover {
+  background: linear-gradient(135deg, #a62d0b, #cf3d19);
+  color: #fff;
+}
+
+/* ====================================================
+   5. Digital Wishes & RSVP Guestbook Section
+   ==================================================== */
+.guestbook-section {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 20px 40px;
+  background: radial-gradient(circle at 50% 100px, rgba(255, 210, 120, 0.12), transparent 45%), linear-gradient(180deg, #7e3812 0%, #602509 50%, #461803 100%);
+  text-align: center;
+}
+
+.guestbook-divider {
+  width: clamp(120px, 35vw, 180px);
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.guestbook-heading {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 6.5vw, 2.5rem);
+  color: #ffe8b3;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  margin-bottom: 8px;
+}
+
+.guestbook-subtitle {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 1.05rem;
+  color: #f7e0c4;
+  max-width: 480px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.guestbook-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* Wishes Card */
+.wishes-card {
+  background: linear-gradient(160deg, #fffdf8 0%, #fcf3e3 50%, #f6dfbe 100%);
+  border: 1.5px solid #d4af37;
+  border-radius: 24px;
+  padding: 24px 20px;
+  box-shadow: 0 14px 35px rgba(40, 12, 2, 0.35), inset 0 1px 0 #fff;
+  text-align: left;
+}
+
+.wishes-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.wishes-lotus {
+  width: 20px;
+  height: auto;
+}
+
+.wishes-card-title {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4a1c03;
+  margin: 0;
+  text-align: center;
+}
+
+.wishes-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 500px) {
+  .form-row {
+    flex-direction: row;
+  }
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-label {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #552306;
+}
+
+.custom-input, .custom-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #d8b475;
+  background: #ffffff;
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.95rem;
+  color: #3b1402;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-input:focus, .custom-textarea:focus {
+  border-color: #8a2408;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+
+.custom-textarea {
+  resize: vertical;
+}
+
+.btn-primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid #e0be78;
+  background: linear-gradient(135deg, #8a2408 0%, #b83314 50%, #6d1a04 100%);
+  color: #fff9e6;
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(109, 26, 4, 0.3);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+  margin-top: 4px;
+}
+
+.btn-primary-action:hover {
+  background: linear-gradient(135deg, #a62d0b 0%, #cf3d19 50%, #852106 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(109, 26, 4, 0.4);
+}
+
+/* Live Wishes Wall */
+.wishes-wall {
+  background: rgba(45, 15, 3, 0.5);
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  border-radius: 24px;
+  padding: 20px 16px;
+  backdrop-filter: blur(8px);
+}
+
+.wall-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.feed-lotus {
+  width: 18px;
+  height: auto;
+}
+
+.wall-title {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffd88a;
+  letter-spacing: 0.3px;
+}
+
+.wishes-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.wishes-feed::-webkit-scrollbar {
+  width: 5px;
+}
+
+.wishes-feed::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.wishes-feed::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+
+.wish-item {
+  background: linear-gradient(145deg, #fffdf8, #faf0dc);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 16px;
+  padding: 12px 14px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  animation: fadeInWish 0.5s ease-out forwards;
+}
+
+.wish-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.wisher-name {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #4a1902;
+}
+
+.wisher-city-badge {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #7a200a;
+  background: rgba(224, 190, 120, 0.35);
+  border: 1px solid rgba(138, 36, 8, 0.2);
+  padding: 1px 8px;
+  border-radius: 999px;
+}
+
+.wish-body {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.92rem;
+  color: #552306;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@keyframes fadeInWish {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====================================================
+   6. Fullscreen Gallery Lightbox Modal
+   ==================================================== */
+.gallery-lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.gallery-lightbox-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 5, 1, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-container {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 820px;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-image-wrap {
+  position: relative;
+  max-width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-main-img {
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 16px;
+  border: 2px solid #d4af37;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.lightbox-caption-bar {
+  margin-top: 12px;
+  background: rgba(255, 248, 235, 0.92);
+  border: 1px solid #d4af37;
+  border-radius: 999px;
+  padding: 6px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-caption {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: clamp(0.85rem, 3.2vw, 1.05rem);
+  font-weight: 700;
+  color: #4a1902;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: rgba(255, 248, 235, 0.85);
+  border: 1px solid #d4af37;
+  color: #4a1902;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 248, 235, 0.85);
+  border: 1px solid #d4af37;
+  color: #4a1902;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.lightbox-nav:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev {
+  left: -20px;
+}
+
+.lightbox-next {
+  right: -20px;
+}
+
+@media (max-width: 600px) {
+  .lightbox-prev {
+    left: 4px;
+  }
+  .lightbox-next {
+    right: 4px;
+  }
+}
+
+/* ====================================================
+   7. WhatsApp Invite Generator Modal
+   ==================================================== */
+.invite-modal-card {
+  max-width: 440px;
+  text-align: center;
+}
+
+.invite-modal-desc {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.95rem;
+  color: #6d3913;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.invite-input-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.invite-label {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #4a1c03;
+}
+
+.invite-preview-box {
+  background: rgba(255, 248, 235, 0.8);
+  border: 1px dashed #c49a45;
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.preview-tag {
+  display: block;
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #8a2408;
+  margin-bottom: 4px;
+}
+
+.preview-body {
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #3e1905;
+  margin: 0;
+}
+
+.whatsapp-action-btn {
+  background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.whatsapp-action-btn:hover {
+  background: linear-gradient(135deg, #15a090 0%, #2ae06d 100%);
+}
+
+/* ====================================================
+   8. Devotional Aarti & Stotra Modal
+   ==================================================== */
+.aarti-modal-card {
+  max-width: 520px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px 24px;
+}
+
+.aarti-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.aarti-tab-btn {
+  background: rgba(234, 215, 188, 0.5);
+  border: 1px solid rgba(184, 132, 45, 0.35);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #552306;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.aarti-tab-btn.active {
+  background: linear-gradient(135deg, #8a2408, #b83314);
+  color: #fff8e8;
+  border-color: #dfb15b;
+  box-shadow: 0 2px 8px rgba(138, 36, 8, 0.25);
+}
+
+.aarti-lyrics-scroll-wrap {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 48vh;
+  background: rgba(255, 250, 240, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+}
+
+.aarti-lyrics-scroll-wrap::-webkit-scrollbar {
+  width: 6px;
+}
+
+.aarti-lyrics-scroll-wrap::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 4px;
+}
+
+.aarti-lyrics-pane {
+  display: none;
+}
+
+.aarti-lyrics-pane.active {
+  display: block;
+  animation: fadeInLyrics 0.3s ease-out forwards;
+}
+
+.lyrics-header {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #7a200a;
+  margin-bottom: 12px;
+}
+
+.lyrics-pre {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: clamp(0.95rem, 3.4vw, 1.05rem);
+  line-height: 1.9;
+  color: #3b1402;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+.aarti-modal-footer {
+  margin-top: 14px;
+}
+
+.btn-copy-lyrics {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid #d4af37;
+  background: linear-gradient(135deg, #f6d58a, #e7b85c);
+  color: #4a1902;
+  font-family: "Noto Serif Devanagari", serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(91, 38, 7, 0.15);
+}
+
+.btn-copy-lyrics:hover {
+  background: linear-gradient(135deg, #ffd98f, #f2c066);
+  transform: translateY(-1px);
+}
+
+@keyframes fadeInLyrics {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

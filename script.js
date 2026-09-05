@@ -251,67 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // ==========================================
-  // 5. Timeline Interactive Modal
-  // ==========================================
-  const timelineModal = document.getElementById('timelineModal');
-  const modalCloseBtn = document.getElementById('modalCloseBtn');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalMurtiImg = document.getElementById('modalMurtiImg');
-  const modalDate = document.getElementById('modalDate');
-  const modalTime = document.getElementById('modalTime');
-  const modalPlace = document.getElementById('modalPlace');
-  const modalDesc = document.getElementById('modalDesc');
 
-  function openTimelineModal(tile) {
-    const title = tile.getAttribute('data-title') || '';
-    const date = tile.getAttribute('data-date') || '';
-    const time = tile.getAttribute('data-time') || '';
-    const place = tile.getAttribute('data-place') || '';
-    const desc = tile.getAttribute('data-desc') || '';
-    const image = tile.getAttribute('data-image') || '';
-
-    modalTitle.textContent = title;
-    modalDate.textContent = date;
-    modalTime.textContent = time;
-    modalPlace.textContent = place;
-    modalDesc.textContent = desc;
-    if (image) {
-      modalMurtiImg.src = image;
-    }
-
-    timelineModal.classList.add('show');
-    timelineModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeTimelineModal() {
-    timelineModal.classList.remove('show');
-    timelineModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  document.querySelectorAll('.utsav-tile').forEach(tile => {
-    tile.addEventListener('click', () => openTimelineModal(tile));
-  });
-
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', closeTimelineModal);
-  }
-
-  if (timelineModal) {
-    timelineModal.addEventListener('click', (e) => {
-      if (e.target === timelineModal) {
-        closeTimelineModal();
-      }
-    });
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && timelineModal.classList.contains('show')) {
-      closeTimelineModal();
-    }
-  });
 
   // ==========================================
   // 6. Sacred Dust Particles & Flower Shower Engine
@@ -473,5 +413,404 @@ document.addEventListener('DOMContentLoaded', () => {
 
   scrollRevealSections.forEach(section => {
     observer.observe(section);
+  });
+
+  // ==========================================
+  // 8. Dynamic Personalized Guest Greeting
+  // ==========================================
+  const personalizedBanner = document.getElementById('personalizedGuestBanner');
+  const guestNameDisplay = document.getElementById('guestNameDisplay');
+  const urlParams = new URLSearchParams(window.location.search);
+  const guestParam = urlParams.get('guest') || urlParams.get('name') || urlParams.get('to');
+
+  if (guestParam && guestParam.trim()) {
+    const cleanGuest = decodeURIComponent(guestParam.trim());
+    if (guestNameDisplay && personalizedBanner) {
+      guestNameDisplay.textContent = cleanGuest;
+      personalizedBanner.style.display = 'block';
+    }
+  }
+
+  // ==========================================
+  // 9. Live Countdown Timer Engine (२७ ऑगस्ट २०२६, १०:०० AM)
+  // ==========================================
+  const targetEventDate = new Date('2026-08-27T10:00:00+05:30').getTime();
+  const elDays = document.getElementById('countdownDays');
+  const elHours = document.getElementById('countdownHours');
+  const elMinutes = document.getElementById('countdownMinutes');
+  const elSeconds = document.getElementById('countdownSeconds');
+
+  // Convert numbers to Marathi Devanagari numerals
+  const marathiDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+  function toMarathiNumber(num) {
+    const str = String(num).padStart(2, '0');
+    return str.split('').map(d => marathiDigits[parseInt(d, 10)] || d).join('');
+  }
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const diff = targetEventDate - now;
+
+    if (diff <= 0) {
+      if (elDays) elDays.textContent = '००';
+      if (elHours) elHours.textContent = '००';
+      if (elMinutes) elMinutes.textContent = '००';
+      if (elSeconds) elSeconds.textContent = '००';
+      const titleEl = document.querySelector('.countdown-title');
+      if (titleEl) titleEl.textContent = '॥ बाप्पाचे आगमन झाले आहे ! ॥';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    if (elDays) elDays.textContent = toMarathiNumber(days);
+    if (elHours) elHours.textContent = toMarathiNumber(hours);
+    if (elMinutes) elMinutes.textContent = toMarathiNumber(minutes);
+    if (elSeconds) elSeconds.textContent = toMarathiNumber(seconds);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ==========================================
+  // 10. Add to Google Calendar Integration
+  // ==========================================
+  const addToCalendarBtn = document.getElementById('addToCalendarBtn');
+  if (addToCalendarBtn) {
+    addToCalendarBtn.addEventListener('click', () => {
+      const eventTitle = encodeURIComponent('बाप्पाचे आगमन - श्री साई गणेश मंडळ, नायगाव बाजार');
+      const eventDesc = encodeURIComponent('श्री साई गणेश मंडळ, स्वामी रामानंद तीर्थ चौक, जुना मोंढा, नायगाव बाजार यांच्या गणेशोत्सवास आपण सपरिवार उपस्थित राहावे ही नम्र विनंती.\n\nस्थान: स्वामी रामानंद तीर्थ चौक, जुना मोंढा, नायगाव बाजार - ४३१७०९\nवेबसाइट: ' + window.location.href);
+      const eventLocation = encodeURIComponent('Swami Ramanand Teerth Chowk, Juna Mondha, Naigaon Bazar - 431709');
+      const eventDates = '20260827T043000Z/20260902T163000Z'; // UTC timings
+
+      const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${eventDates}&details=${eventDesc}&location=${eventLocation}`;
+      window.open(gcalUrl, '_blank');
+    });
+  }
+
+  // ==========================================
+  // 11. WhatsApp Personalized Invite Modal & Generator
+  // ==========================================
+  const inviteGeneratorModal = document.getElementById('inviteGeneratorModal');
+  const openInviteGeneratorBtn = document.getElementById('openInviteGeneratorBtn');
+  const closeInviteModalBtn = document.getElementById('closeInviteModalBtn');
+  const guestNameInput = document.getElementById('guestNameInput');
+  const invitePreviewText = document.getElementById('invitePreviewText');
+  const sendWhatsappInviteBtn = document.getElementById('sendWhatsappInviteBtn');
+
+  function updateInvitePreview() {
+    const rawName = (guestNameInput && guestNameInput.value.trim()) || 'पाहुणे';
+    if (invitePreviewText) {
+      invitePreviewText.innerHTML = `
+        ॥ श्री गणेशाय नमः ॥<br/>
+        <strong>सस्नेह निमंत्रण !</strong><br/>
+        आदरणीय <strong>${rawName}</strong>,<br/>
+        श्री साई गणेश मंडळ, स्वामी रामानंद तीर्थ चौक, जुना मोंढा, नायगाव बाजार यांच्या गणेशोत्सवास आपण सपरिवार उपस्थित राहावे ही नम्र विनंती...
+      `;
+    }
+  }
+
+  if (openInviteGeneratorBtn && inviteGeneratorModal) {
+    openInviteGeneratorBtn.addEventListener('click', () => {
+      inviteGeneratorModal.classList.add('show');
+      inviteGeneratorModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (guestNameInput) {
+        guestNameInput.focus();
+      }
+      updateInvitePreview();
+    });
+  }
+
+  if (closeInviteModalBtn && inviteGeneratorModal) {
+    closeInviteModalBtn.addEventListener('click', () => {
+      inviteGeneratorModal.classList.remove('show');
+      inviteGeneratorModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  }
+
+  if (inviteGeneratorModal) {
+    inviteGeneratorModal.addEventListener('click', (e) => {
+      if (e.target === inviteGeneratorModal) {
+        inviteGeneratorModal.classList.remove('show');
+        inviteGeneratorModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  if (guestNameInput) {
+    guestNameInput.addEventListener('input', updateInvitePreview);
+  }
+
+  if (sendWhatsappInviteBtn) {
+    sendWhatsappInviteBtn.addEventListener('click', () => {
+      const guestName = (guestNameInput && guestNameInput.value.trim()) || '';
+      const baseUrl = window.location.origin + window.location.pathname;
+      const personalizedUrl = guestName ? `${baseUrl}?guest=${encodeURIComponent(guestName)}` : baseUrl;
+
+      const message = `॥ श्री गणेशाय नमः ॥ 🌺
+
+*सस्नेह निमंत्रण !*
+${guestName ? `आदरणीय *${guestName}*,\n` : ''}
+आपणास व आपल्या संपूर्ण परिवारास *'श्री साई गणेश मंडळ'*, स्वामी रामानंद तीर्थ चौक, जुना मोंढा, नायगाव बाजार यांच्या भव्य गणेशोत्सवास उपस्थित राहण्याचे आग्रहाचे व सस्नेह निमंत्रण !
+
+🌸 *उत्सवाची रूपरेषा व माहिती पाहण्यासाठी खालील डिजिटल निमंत्रण लिंक उघडा:*
+👉 ${personalizedUrl}
+
+*स्थळ:* स्वामी रामानंद तीर्थ चौक, जुना मोंढा, नायगाव बाजार - ४३१७०९
+आपली उपस्थिती हाच बाप्पांचा खरा आशीर्वाद!
+॥ गणपती बाप्पा मोरया ॥ 🙏`;
+
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    });
+  }
+
+  // ==========================================
+  // 12. Devotional Aarti & Stotra Modal Engine
+  // ==========================================
+  const aartiModal = document.getElementById('aartiModal');
+  const openAartiModalBtn = document.getElementById('openAartiModalBtn');
+  const closeAartiModalBtn = document.getElementById('closeAartiModalBtn');
+  const aartiTabBtns = document.querySelectorAll('.aarti-tab-btn');
+  const aartiPanes = document.querySelectorAll('.aarti-lyrics-pane');
+  const copyLyricsBtn = document.getElementById('copyLyricsBtn');
+  const copyLyricsText = document.getElementById('copyLyricsText');
+
+  if (openAartiModalBtn && aartiModal) {
+    openAartiModalBtn.addEventListener('click', () => {
+      aartiModal.classList.add('show');
+      aartiModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  if (closeAartiModalBtn && aartiModal) {
+    closeAartiModalBtn.addEventListener('click', () => {
+      aartiModal.classList.remove('show');
+      aartiModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  }
+
+  if (aartiModal) {
+    aartiModal.addEventListener('click', (e) => {
+      if (e.target === aartiModal) {
+        aartiModal.classList.remove('show');
+        aartiModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  aartiTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      aartiTabBtns.forEach(b => b.classList.remove('active'));
+      aartiPanes.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetPane = document.getElementById(`pane-${tabId}`);
+      if (targetPane) {
+        targetPane.classList.add('active');
+      }
+    });
+  });
+
+  if (copyLyricsBtn) {
+    copyLyricsBtn.addEventListener('click', () => {
+      const activePane = document.querySelector('.aarti-lyrics-pane.active');
+      if (!activePane) return;
+      const lyricsPre = activePane.querySelector('.lyrics-pre');
+      const header = activePane.querySelector('.lyrics-header');
+      const textToCopy = `${header ? header.textContent + '\n\n' : ''}${lyricsPre ? lyricsPre.textContent : ''}`;
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        if (copyLyricsText) {
+          const originalText = copyLyricsText.textContent;
+          copyLyricsText.textContent = 'बोल कॉपी झाले! ✓';
+          setTimeout(() => {
+            copyLyricsText.textContent = originalText;
+          }, 2000);
+        }
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    });
+  }
+
+  // ==========================================
+  // 13. Digital Wishes & RSVP Wall (LocalStorage)
+  // ==========================================
+  const wishesForm = document.getElementById('wishesForm');
+  const wishesFeed = document.getElementById('wishesFeed');
+  const STORAGE_KEY = 'sai_ganesh_wishes_v1';
+
+  const defaultWishes = [
+    {
+      name: 'अमोल कुलकर्णी',
+      city: 'नायगाव बाजार',
+      message: 'गणपती बाप्पा मोरया! श्री साई गणेश मंडळाच्या सर्व कार्यकर्त्यांचे अभिनंदन व उत्सवास हार्दिक शुभेच्छा!'
+    },
+    {
+      name: 'संजय पाटील परिवार',
+      city: 'नांदेड',
+      message: 'आगमन सोहळ्यास आम्ही नक्की उपस्थित राहू. बाप्पांचे आशीर्वाद तुम्हा सर्वांवर राहोत!'
+    },
+    {
+      name: 'विजय देशमुख',
+      city: 'पुणे',
+      message: 'मंगलमूर्ती मोरया! अतिशय सुंदर निमंत्रण पत्रिका तयार केली आहे.'
+    }
+  ];
+
+  function getStoredWishes() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEY);
+      return data ? JSON.parse(data) : defaultWishes;
+    } catch (e) {
+      return defaultWishes;
+    }
+  }
+
+  function saveWishes(wishes) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
+    } catch (e) {}
+  }
+
+  function renderWishes() {
+    if (!wishesFeed) return;
+    const wishes = getStoredWishes();
+    wishesFeed.innerHTML = '';
+
+    wishes.forEach(wish => {
+      const div = document.createElement('div');
+      div.className = 'wish-item';
+      div.innerHTML = `
+        <div class="wish-header-row">
+          <span class="wisher-name">🌺 ${escapeHtml(wish.name)}</span>
+          ${wish.city ? `<span class="wisher-city-badge">${escapeHtml(wish.city)}</span>` : ''}
+        </div>
+        <p class="wish-body">${escapeHtml(wish.message)}</p>
+      `;
+      wishesFeed.appendChild(div);
+    });
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  renderWishes();
+
+  if (wishesForm) {
+    wishesForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('wisherName');
+      const cityInput = document.getElementById('wisherCity');
+      const msgInput = document.getElementById('wisherMessage');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const city = cityInput ? cityInput.value.trim() : '';
+      const message = msgInput ? msgInput.value.trim() : '';
+
+      if (!name || !message) return;
+
+      const newWish = { name, city, message };
+      const currentWishes = getStoredWishes();
+      currentWishes.unshift(newWish);
+      saveWishes(currentWishes);
+      renderWishes();
+
+      wishesForm.reset();
+
+      const submitBtn = document.getElementById('submitWishBtn');
+      if (submitBtn) {
+        const originalBtnHtml = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<span>सदिच्छा पाठवली! धन्यवाद 🙏</span>';
+        setTimeout(() => {
+          submitBtn.innerHTML = originalBtnHtml;
+        }, 3000);
+      }
+    });
+  }
+
+  // ==========================================
+  // 14. Fullscreen Gallery Lightbox Engine
+  // ==========================================
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryLightboxModal = document.getElementById('galleryLightboxModal');
+  const lightboxMainImg = document.getElementById('lightboxMainImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+  const lightboxPrevBtn = document.getElementById('lightboxPrevBtn');
+  const lightboxNextBtn = document.getElementById('lightboxNextBtn');
+  const lightboxOverlay = document.getElementById('lightboxOverlay');
+
+  const galleryData = [];
+  galleryItems.forEach((item, index) => {
+    const src = item.getAttribute('data-src') || (item.querySelector('img') && item.querySelector('img').src);
+    const caption = item.getAttribute('data-caption') || (item.querySelector('.gallery-overlay') && item.querySelector('.gallery-overlay').textContent);
+    galleryData.push({ src, caption });
+
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => {
+      openLightbox(index);
+    });
+  });
+
+  let currentGalleryIndex = 0;
+
+  function openLightbox(index) {
+    if (!galleryLightboxModal || !galleryData[index]) return;
+    currentGalleryIndex = index;
+    updateLightboxContent();
+    galleryLightboxModal.classList.add('show');
+    galleryLightboxModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!galleryLightboxModal) return;
+    galleryLightboxModal.classList.remove('show');
+    galleryLightboxModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function updateLightboxContent() {
+    const item = galleryData[currentGalleryIndex];
+    if (!item) return;
+    if (lightboxMainImg) lightboxMainImg.src = item.src;
+    if (lightboxCaption) lightboxCaption.textContent = item.caption;
+  }
+
+  function nextLightbox() {
+    currentGalleryIndex = (currentGalleryIndex + 1) % galleryData.length;
+    updateLightboxContent();
+  }
+
+  function prevLightbox() {
+    currentGalleryIndex = (currentGalleryIndex - 1 + galleryData.length) % galleryData.length;
+    updateLightboxContent();
+  }
+
+  if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+  if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+  if (lightboxNextBtn) lightboxNextBtn.addEventListener('click', nextLightbox);
+  if (lightboxPrevBtn) lightboxPrevBtn.addEventListener('click', prevLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (!galleryLightboxModal || !galleryLightboxModal.classList.contains('show')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextLightbox();
+    if (e.key === 'ArrowLeft') prevLightbox();
   });
 });
