@@ -205,6 +205,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2500);
   }
 
+  if (curtainSealBtn) {
+    curtainSealBtn.addEventListener('click', openCurtain);
+    curtainSealBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      openCurtain();
+    });
+  }
+
+  if (curtainCenter) {
+    curtainCenter.addEventListener('click', openCurtain);
+  }
+
   // ==========================================
   // 4. Scroll Down Indicator Interaction
   // ==========================================
