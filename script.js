@@ -243,22 +243,59 @@ document.addEventListener('DOMContentLoaded', () => {
         dot.classList.remove('active');
       }
     });
+    familyCards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        if (card.classList.contains('prev')) {
+          updateFamilySlider(currentFamilyIndex - 1);
+        } else if (card.classList.contains('next')) {
+          updateFamilySlider(currentFamilyIndex + 1);
+        }
+      });
+    });
+  }
+
+  // Auto Slider from Left to Right
+  let familyAutoSlideTimer = null;
+  function startFamilyAutoSlide() {
+    stopFamilyAutoSlide();
+    familyAutoSlideTimer = setInterval(() => {
+      updateFamilySlider(currentFamilyIndex + 1);
+    }, 3500);
+  }
+
+  function stopFamilyAutoSlide() {
+    if (familyAutoSlideTimer) {
+      clearInterval(familyAutoSlideTimer);
+      familyAutoSlideTimer = null;
+    }
+  }
+
+  startFamilyAutoSlide();
+
+  if (familySlider) {
+    familySlider.addEventListener('mouseenter', stopFamilyAutoSlide);
+    familySlider.addEventListener('mouseleave', startFamilyAutoSlide);
   }
 
   if (familyPrevBtn) {
     familyPrevBtn.addEventListener('click', () => {
       updateFamilySlider(currentFamilyIndex - 1);
+      startFamilyAutoSlide();
     });
   }
 
   if (familyNextBtn) {
     familyNextBtn.addEventListener('click', () => {
       updateFamilySlider(currentFamilyIndex + 1);
+      startFamilyAutoSlide();
     });
   }
 
   familyDots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => updateFamilySlider(idx));
+    dot.addEventListener('click', () => {
+      updateFamilySlider(idx);
+      startFamilyAutoSlide();
+    });
   });
 
   // Touch Swipe for Family Slider
@@ -268,6 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (familySlider) {
     familySlider.addEventListener('touchstart', (e) => {
+      stopFamilyAutoSlide();
       const touch = e.touches[0];
       touchStartX = touch.clientX;
       touchStartY = touch.clientY;
@@ -296,6 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
       isSwiping = false;
+      startFamilyAutoSlide();
     }, { passive: true });
   }
 
