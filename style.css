@@ -518,13 +518,17 @@ to {
   -webkit-tap-highlight-color:transparent
 }
 body {
-  font-family:"Noto Serif Devanagari",serif;
-  background-color:var(--temple-base);
-  background-image:url(assets/paper-texture.webp),radial-gradient(circle at center,rgba(239,216,174,.8),transparent 80%),linear-gradient(180deg,var(--temple-base) 0%,var(--temple-cream) 40%,var(--temple-dark-cream) 100%);
-  background-blend-mode:multiply,normal,normal;
-  background-attachment:fixed;
-  overflow-x:hidden;
-  color:var(--brown)
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--temple-base);
+  background-image: url(assets/paper-texture.webp), radial-gradient(circle at center, rgba(239, 216, 174, .8), transparent 80%), linear-gradient(180deg, var(--temple-base) 0%, var(--temple-cream) 40%, var(--temple-dark-cream) 100%);
+  background-blend-mode: multiply, normal, normal;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  color: var(--brown);
 }
 :root {
   --family-bg-top:#A14F1B;
@@ -635,13 +639,16 @@ body {
   font-weight:700
 }
 .title {
-  font-family:Yatra One,serif;
-  font-size:clamp(40px,15.2vw,90px);
-  line-height:1.1;
-  color:var(--primary-heading, var(--brown));
-  text-align:center;
-  margin-bottom:clamp(5px,1.5svh,15px);
-  text-shadow:1px 1px 0px rgba(255,255,255,.5)
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", "Yatra One", serif;
+  font-weight: 700;
+  font-size: clamp(40px, 15.2vw, 90px);
+  line-height: 1.15;
+  color: var(--primary-heading, var(--brown));
+  text-align: center;
+  margin-bottom: clamp(5px, 1.5svh, 15px);
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, .5);
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
 }
 .subtitle {
   font-size:clamp(12px,4vw,20px);
@@ -763,16 +770,18 @@ to {
 .seal-text {
   display:block;
   color:#5b2607;
-  font-family:Yatra One;
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", "Yatra One", serif;
   font-size:1rem;
   margin-bottom:28px
 }
 .seal-family-name {
-  font-family:Yatra One;
-  font-size:clamp(2.1rem,8vw,3rem);
+  font-family:"Noto Serif Devanagari","Tiro Devanagari Marathi",serif;
+  font-weight:700;
+  font-size:clamp(1.8rem,7vw,2.7rem);
   color:#5b2607;
   margin-bottom:28px;
-  position:relative
+  position:relative;
+  letter-spacing:.3px
 }
 .seal-family-name:after {
   content:"";
@@ -890,11 +899,13 @@ to {
 }
 .family-heading {
   color:#4a1f06;
-  font-family:Yatra One,serif;
+  font-family:"Noto Serif Devanagari","Tiro Devanagari Marathi",serif;
+  font-weight:700;
   text-shadow:0 1px 0 rgba(255,255,255,.35);
-  font-size:clamp(1rem,9vw,3rem);
+  font-size:clamp(1.2rem,7vw,2.5rem);
   line-height:1.2;
-  margin-bottom:0
+  margin-bottom:0;
+  letter-spacing:.3px
 }
 .family-subtitle {
   color:#fff;
@@ -974,11 +985,12 @@ to {
   width:24px
 }
 .member-name span {
-  font-family:Yatra One;
-  font-size:1.5rem;
-  font-weight:600;
+  font-family:"Noto Serif Devanagari","Tiro Devanagari Marathi",serif;
+  font-size:1.45rem;
+  font-weight:700;
   color:#3e1602;
-  text-shadow:none
+  text-shadow:none;
+  letter-spacing:.2px
 }
 .family-btn {
   position:absolute;
@@ -2011,7 +2023,8 @@ to {
   border-radius:999px;
   background:linear-gradient(180deg,#7a2f0c,#4b1c05);
   color:#f6d58a;
-  font-family:Yatra One;
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", "Yatra One", serif;
+  font-weight: 700;
   font-size:1.2rem;
   border:2px solid rgba(255,215,120,.3);
   box-shadow:0 0 30px #ffb43240,inset 0 0 12px #ffd77833;
@@ -2081,7 +2094,8 @@ to {
   margin:0 auto 25px
 }
 .gallery-heading {
-  font-family:Yatra One;
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", "Yatra One", serif;
+  font-weight: 700;
   font-size:clamp(2.5rem,9vw,4rem);
   color:#5b2607;
   text-align:center;
@@ -2198,7 +2212,8 @@ to {
   margin-bottom:35px
 }
 .footer-quote {
-  font-family:Yatra One;
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", "Yatra One", serif;
+  font-weight: 700;
   font-size:clamp(2rem,8vw,3rem);
   line-height:1.65;
   color:#5b2607;

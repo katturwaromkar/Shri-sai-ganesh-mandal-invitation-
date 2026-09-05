@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateFamilySlider(index) {
     if (!familyTotal) return;
-    currentFamilyIndex = (index + familyTotal) % familyTotal;
+    currentFamilyIndex = (index % familyTotal + familyTotal) % familyTotal;
     const prevIdx = (currentFamilyIndex - 1 + familyTotal) % familyTotal;
     const nextIdx = (currentFamilyIndex + 1) % familyTotal;
 
@@ -243,24 +243,28 @@ document.addEventListener('DOMContentLoaded', () => {
         dot.classList.remove('active');
       }
     });
-    familyCards.forEach((card, idx) => {
-      card.addEventListener('click', () => {
-        if (card.classList.contains('prev')) {
-          updateFamilySlider(currentFamilyIndex - 1);
-        } else if (card.classList.contains('next')) {
-          updateFamilySlider(currentFamilyIndex + 1);
-        }
-      });
-    });
   }
 
-  // Auto Slider from Left to Right
+  // Card click handlers
+  familyCards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      if (card.classList.contains('prev')) {
+        updateFamilySlider(currentFamilyIndex - 1);
+        startFamilyAutoSlide();
+      } else if (card.classList.contains('next')) {
+        updateFamilySlider(currentFamilyIndex + 1);
+        startFamilyAutoSlide();
+      }
+    });
+  });
+
+  // Continuous Auto Slider (Left to Right / Loop)
   let familyAutoSlideTimer = null;
   function startFamilyAutoSlide() {
     stopFamilyAutoSlide();
     familyAutoSlideTimer = setInterval(() => {
       updateFamilySlider(currentFamilyIndex + 1);
-    }, 3500);
+    }, 2800);
   }
 
   function stopFamilyAutoSlide() {
