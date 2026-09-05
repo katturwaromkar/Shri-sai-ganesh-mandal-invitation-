@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>बाप्पाचे आगमन | सस्नेह निमंत्रण</title>
+  
+  <!-- Meta tags for rich preview -->
+  <meta name="description" content="बाप्पाचे आगमन - आपणास व आपल्या परिवारास सस्नेह निमंत्रण ! श्री साई गणेश मंडळ" />
+  <meta property="og:title" content="बाप्पाचे आगमन | सस्नेह निमंत्रण" />
+  <meta property="og:description" content="गणरायाच्या आगमनाच्या या मंगल क्षणी आपण सर्वांनी उपस्थित राहून उत्सवाची शोभा वाढवावी." />
+  <meta property="og:image" content="assets/murti-DogDNfqS.webp" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Yatra+One&family=Asar&family=Poppins:wght@400;500;600;700&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="root">
+    
+    <!-- Audio Background Music Element -->
+    <audio id="bgAudio" src="assets/bgMusic-Cx9Z66jg.mp3" loop preload="auto"></audio>
+
+    <!-- Curtain Overlay (Tap to Open) -->
+    <div class="curtain-container" id="curtainContainer" aria-hidden="false">
+      <!-- Left Panel -->
+      <div class="curtain-panel panel-left" id="curtainPanelLeft">
+        <div class="curtain-panel-decor"></div>
+        <div class="curtain-decor-line"></div>
+        <div class="curtain-decor-outer"></div>
+        <div class="curtain-corner curtain-corner--top"></div>
+        <div class="curtain-corner curtain-corner--bottom"></div>
+        <img src="assets/mandala-jdOIDeh6.webp" alt="" class="curtain-mandala curtain-mandala--left" draggable="false" loading="eager" fetchpriority="high" />
+      </div>
+
+      <!-- Right Panel -->
+      <div class="curtain-panel panel-right" id="curtainPanelRight">
+        <div class="curtain-panel-decor"></div>
+        <div class="curtain-decor-line"></div>
+        <div class="curtain-decor-outer"></div>
+        <div class="curtain-corner curtain-corner--top"></div>
+        <div class="curtain-corner curtain-corner--bottom"></div>
+        <img src="assets/mandala-jdOIDeh6.webp" alt="" class="curtain-mandala curtain-mandala--right" draggable="false" loading="eager" fetchpriority="high" />
+      </div>
+
+      <!-- Center Seal Button -->
+      <div class="curtain-center-content" id="curtainCenter">
+        <div class="curtain-seal-ring"></div>
+        <div class="curtain-seal-ring-inner"></div>
+        <button class="curtain-seal" id="curtainSealBtn" type="button" aria-label="Tap to Open Invitation">
+          <span class="curtain-seal-text-hi">गणपती नमः</span>
+          <span class="curtain-seal-divider">
+            <svg width="24" height="8" viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0L14 3.5H24L15.5 5L12 8L8.5 5L0 3.5H10L12 0Z" fill="#8D5A18" opacity="0.6"></path>
+            </svg>
+          </span>
+          <span class="curtain-seal-text-en">Tap To Open</span>
+          <span class="curtain-seal-shine"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="heroSection">
+      <!-- Floating Audio Toggle -->
+      <div class="music-toggle-wrapper">
+        <button aria-label="Play devotional music" aria-pressed="false" class="music-toggle" id="musicToggle" type="button">
+          <span class="music-toggle__icon" id="musicToggleIcon">
+            <!-- Muted Icon by default -->
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path fill="none" d="M0 0h24v24H0z"></path>
+              <path d="M4.27 3 3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73L19.73 21 21 19.73zM14 7h4V3h-6v5.18l2 2z"></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+
+      <!-- Top Toran Layer -->
+      <img src="assets/top-layer-BdL4xo3x.webp" alt="" class="toplayer hero-anim-toplayer" loading="eager" fetchpriority="high" />
+
+      <!-- Left & Right Pillars -->
+      <img src="assets/piller-pvoq_vZm.webp" alt="" class="pillar left hero-anim-pillar-left" loading="eager" fetchpriority="high" />
+      <img src="assets/piller-pvoq_vZm.webp" alt="" class="pillar right hero-anim-pillar-right" loading="eager" fetchpriority="high" />
+
+      <!-- Left & Right Hanging Bells -->
+      <img src="assets/bell-2-CjaksJjB.webp" alt="Bell" class="bell bell-left hero-anim-bell" id="heroBellLeft" loading="eager" fetchpriority="high" />
+      <img src="assets/bell-2-CjaksJjB.webp" alt="Bell" class="bell bell-right hero-anim-bell" id="heroBellRight" loading="eager" fetchpriority="high" />
+
+      <!-- Hero Central Content -->
+      <div class="hero-content hero-anim-text-1">
+        <img src="assets/logo-m7LBp2Yu.webp" alt="Om" class="logo" loading="eager" fetchpriority="high" />
+        <p class="shlok hero-anim-text-2">॥ श्री गणेशाय नमः ॥</p>
+        <h1 class="title hero-anim-text-3">
+          <span>बाप्पाचे</span><br />
+          <span>आगमन</span>
+        </h1>
+        <p class="subtitle hero-anim-text-4">आपणास सस्नेह निमंत्रण !</p>
+        
+        <!-- Hero Shrine / Murti Altar -->
+        <div class="hero-shrine hero-anim-murti">
+          <img src="assets/murti-DogDNfqS.webp" alt="Lord Ganesha" class="murti" loading="eager" fetchpriority="high" />
+        </div>
+      </div>
+
+      <!-- Family Strip Seal under Hero -->
+      <section class="family-strip hero-anim-text-5">
+        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="family-divider" />
+        <div class="inviter-seal">
+          <p class="seal-text">॥ सप्रेम निमंत्रक ॥</p>
+          <h2 class="seal-family-name">श्री साई गणेश मंडळ</h2>
+          <p class="seal-message">आपण व आपल्या परिवारास सस्नेह निमंत्रण !</p>
+        </div>
+        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="family-divider" />
+      </section>
+
+      <!-- Bottom Curve Wave -->
+      <div class="custom-shape-divider-bottom">
+        <svg data-name="Layer 1" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+          <path class="shape-fill" d="M0,120 L0,0 Q600,240 1200,0 L1200,120 Z"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Family Section (॥ निमंत्रक ॥) -->
+    <section class="family-section scroll-reveal" id="familySection">
+      <div class="family-top scroll-reveal-child">
+        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="family-divider" />
+        <p class="family-tag">॥ निमंत्रक ॥</p>
+        <div class="family-heading-wrapper">
+          <img src="assets/f1-ADhmizYT.webp" alt="" class="flourish left" />
+          <h2 class="family-heading">श्री साई गणेश मंडळ</h2>
+          <img src="assets/f1-ADhmizYT.webp" alt="" class="flourish right" />
+        </div>
+        <p class="family-subtitle">गणरायाच्या आगमनाच्या या मंगल क्षणी आपण सर्वांनी उपस्थित राहून उत्सवाची शोभा वाढवावी.</p>
+      </div>
+
+      <!-- Family Cards 3D Slider -->
+      <div class="family-slider-wrapper scroll-reveal-child">
+        <button class="family-btn prev" id="familyPrevBtn" aria-label="Previous">❮</button>
+        <div class="family-slider" id="familySlider">
+          <!-- Card 1 -->
+          <div class="family-card active" data-index="0">
+            <img src="assets/flower1-BlVhglJb.webp" alt="" class="card-flower left" />
+            <img src="assets/flower1-BlVhglJb.webp" alt="" class="card-flower right" />
+            <img src="assets/family-1-D6DB0Svu.webp" alt="श्री. रमेश देशपांडे" class="member-img" />
+            <div class="member-name">
+              <img src="assets/lotus-C9mPCXs6.webp" alt="" />
+              <span>श्री. रमेश देशपांडे</span>
+              <img src="assets/lotus-C9mPCXs6.webp" alt="" />
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="family-card next" data-index="1">
+            <img src="assets/flower1-BlVhglJb.webp" alt="" class="card-flower left" />
+            <img src="assets/flower1-BlVhglJb.webp" alt="" class="card-flower right" />
+            <img src="assets/family-2-DA8DTEL4.webp" alt="सौ. कविता देशपांडे" class="member-img" />
+            <div class="member-name">
+              <img src="assets/lotus-C9mPCXs6.webp" alt="" />
+              <span>सौ. कविता देशपांडे</span>
+              <img src="assets/lotus-C9mPCXs6.webp" alt="" />
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="family-card prev" data-index="2">
+            <img src="assets/flower1-BlVhglJb.webp" alt="" class="card-flower left" />
+            <img src="assets/flower1-BlVhglJb.webp" alt="" class="card-flower right" />
+            <img src="assets/family-3-CBo3jFmR.webp" alt="चि. अथर्व देशपांडे" class="member-img" />
+            <div class="member-name">
+              <img src="assets/lotus-C9mPCXs6.webp" alt="" />
+              <span>चि. अथर्व देशपांडे</span>
+              <img src="assets/lotus-C9mPCXs6.webp" alt="" />
+            </div>
+          </div>
+        </div>
+        <button class="family-btn next" id="familyNextBtn" aria-label="Next">❯</button>
+      </div>
+
+      <!-- Slider Dots -->
+      <div class="slider-dots scroll-reveal-child" id="familyDots">
+        <span class="active" data-index="0"></span>
+        <span data-index="1"></span>
+        <span data-index="2"></span>
+      </div>
+
+      <p class="family-bottom-text scroll-reveal-child">गणरायाच्या आगमन सोहळ्यास आपली उपस्थिती हीच आमच्यासाठी आशीर्वाद असेल.</p>
+      <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="family-divider scroll-reveal-child" />
+      <img src="assets/diva2-Cj74hIfe.webp" alt="" class="family-diya-left" />
+      <img src="assets/aarti-BmqCfmT2.webp" alt="" class="family-aarti-left" />
+    </section>
+
+    <!-- Timeline Section (उत्सवाचा मंगल प्रवास) -->
+    <section class="utsav-section scroll-reveal" id="timelineSection">
+      <img src="assets/divider-1-CA7Shuxn.webp" alt="Divider" class="section-divider scroll-reveal-child" />
+      <p class="utsav-tag scroll-reveal-child"></p>
+      <h2 class="utsav-heading scroll-reveal-child">उत्सवाचा मंगल प्रवास</h2>
+      <p class="utsav-subtitle scroll-reveal-child">गणरायाच्या आगमनापासून विसर्जनापर्यंत प्रत्येक मंगल क्षणाची माहिती</p>
+
+      <div class="utsav-timeline scroll-reveal-child">
+        <img src="assets/lotus-C9mPCXs6.webp" alt="Lotus" class="timeline-lotus top-lotus" />
+
+        <!-- Event 1: मूर्ती स्थापना -->
+        <div class="timeline-row row-left">
+          <div class="timeline-node"></div>
+          <div class="utsav-tile" 
+               data-id="sthapana"
+               data-title="मूर्ती स्थापना"
+               data-label="स्थापना"
+               data-date="27 ऑगस्ट 2026"
+               data-time="सकाळी 10:00 वाजता"
+               data-place="श्री सिद्धिविनायक मंदिर"
+               data-desc="गणरायाचे मंगल आगमन आणि मूर्ती स्थापना सोहळा."
+               data-image="assets/sthapana-opt-po5HE-Wf.webp">
+            स्थापना
+          </div>
+        </div>
+
+        <!-- Event 2: सकाळची आरती -->
+        <div class="timeline-row row-right">
+          <div class="timeline-node"></div>
+          <div class="utsav-tile" 
+               data-id="sakali-aarti"
+               data-title="सकाळची आरती"
+               data-label="आरती"
+               data-date="दररोज"
+               data-time="सकाळी 8:00 वाजता"
+               data-place="मुख्य सभागृह"
+               data-desc="सकाळची मंगल आरती व प्रसाद."
+               data-image="assets/aarti-opt-DAeVgRo3.webp">
+            आरती
+          </div>
+        </div>
+
+        <!-- Event 3: संध्याकाळची आरती -->
+        <div class="timeline-row row-left">
+          <div class="timeline-node"></div>
+          <div class="utsav-tile" 
+               data-id="sandhyakal-aarti"
+               data-title="संध्याकाळची आरती"
+               data-label="दीपआरती"
+               data-date="दररोज"
+               data-time="संध्याकाळी 7:30 वाजता"
+               data-place="मुख्य सभागृह"
+               data-desc="दीपप्रज्वलन व आरती सोहळा."
+               data-image="assets/aarti-opt-DAeVgRo3.webp">
+            दीपआरती
+          </div>
+        </div>
+
+        <!-- Event 4: सत्यनारायण पूजा -->
+        <div class="timeline-row row-right">
+          <div class="timeline-node"></div>
+          <div class="utsav-tile" 
+               data-id="satyanarayan-pooja"
+               data-title="सत्यनारायण पूजा"
+               data-label="सत्यनारायण पूजा"
+               data-date="३० ऑगस्ट २०२६"
+               data-time="सकाळी १०:३० वाजता"
+               data-place="मुख्य सभागृह"
+               data-desc="श्री सत्यनारायण महापूजा व महाप्रसाद."
+               data-image="assets/atharvshish-opt-BokKd3D3.webp">
+            सत्यनारायण पूजा
+          </div>
+        </div>
+
+        <!-- Event 5: महाप्रसाद -->
+        <div class="timeline-row row-left">
+          <div class="timeline-node"></div>
+          <div class="utsav-tile" 
+               data-id="mahaprasad"
+               data-title="महाप्रसाद"
+               data-label="महाप्रसाद"
+               data-date="30 ऑगस्ट"
+               data-time="रात्री 8:30 वाजता"
+               data-place="प्रसाद विभाग"
+               data-desc="महाप्रसादाचा आनंद घ्या."
+               data-image="assets/mahaprasad-opt-B_Zc2sef.webp">
+            महाप्रसाद
+          </div>
+        </div>
+
+        <!-- Event 6: सांस्कृतिक कार्यक्रम -->
+        <div class="timeline-row row-right">
+          <div class="timeline-node"></div>
+          <div class="utsav-tile" 
+               data-id="sanskritik-karyakram"
+               data-title="सांस्कृतिक कार्यक्रम"
+               data-label="कार्यक्रम"
+               data-date="31 ऑगस्ट"
+               data-time="सायंकाळी 6:00 वाजता"
+               data-place="सभागृह"
+               data-desc="भजन, कीर्तन व सांस्कृतिक कार्यक्रम."
+               data-image="assets/snehbhet-opt-CGz7vv-w.webp">
+            कार्यक्रम
+          </div>
+        </div>
+
+        <!-- Event 7: विसर्जन -->
+        <div class="timeline-row row-left">
+          <div class="timeline-node"></div>
+          <div class="utsav-tile" 
+               data-id="visarjan"
+               data-title="विसर्जन"
+               data-label="विसर्जन"
+               data-date="2 सप्टेंबर"
+               data-time="सायंकाळी 5:00 वाजता"
+               data-place="विसर्जन मिरवणूक"
+               data-desc="गणरायाला निरोप देण्याचा मंगल क्षण."
+               data-image="assets/visarjan-opt-Epp4xHxG.webp">
+            विसर्जन
+          </div>
+        </div>
+
+        <img src="assets/lotus-C9mPCXs6.webp" alt="Lotus" class="timeline-lotus bottom-lotus" />
+      </div>
+
+      <div class="timeline-tip scroll-reveal-child">
+        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="tip-divider" />
+        <div class="tip-pill">स्पर्श करा • माहिती पहा</div>
+      </div>
+    </section>
+
+    <!-- Timeline Event Details Modal -->
+    <div class="utsav-modal" id="timelineModal" aria-hidden="true">
+      <div class="modal-card">
+        <button class="close-modal" id="modalCloseBtn" type="button" aria-label="Close modal">✕</button>
+        <h3 class="modal-title" id="modalTitle">मूर्ती स्थापना</h3>
+        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="modal-divider" />
+
+        <div class="modal-murti-wrapper">
+          <div class="murti-glow"></div>
+          <img src="assets/sthapana-opt-po5HE-Wf.webp" alt="Event Image" class="modal-murti" id="modalMurtiImg" style="object-fit: contain;" />
+        </div>
+
+        <div class="premium-info-rows">
+          <div class="info-row">
+            <img src="assets/diva2-Cj74hIfe.webp" alt="" class="row-icon-img" />
+            <div class="row-text">
+              <span class="row-label">दिनांक</span>
+              <span class="modal-date" id="modalDate">27 ऑगस्ट 2026</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <img src="assets/diva2-Cj74hIfe.webp" alt="" class="row-icon-img" />
+            <div class="row-text">
+              <span class="row-label">वेळ</span>
+              <span class="modal-time" id="modalTime">सकाळी 10:00 वाजता</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <img src="assets/diva2-Cj74hIfe.webp" alt="" class="row-icon-img" />
+            <div class="row-text">
+              <span class="row-label">स्थळ</span>
+              <span class="modal-place" id="modalPlace">श्री सिद्धिविनायक मंदिर</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-description">
+          <p class="modal-desc" id="modalDesc">गणरायाचे मंगल आगमन आणि मूर्ती स्थापना सोहळा.</p>
+        </div>
+        <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="modal-divider bottom-divider" />
+      </div>
+    </div>
+
+    <!-- Location Section (कार्यक्रम स्थळ) -->
+    <section class="location-section scroll-reveal" id="locationSection">
+      <div class="custom-shape-divider-top-1784026445">
+        <svg data-name="Layer 1" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+          <path class="shape-fill" d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z"></path>
+        </svg>
+      </div>
+
+      <img src="assets/divider-1-CA7Shuxn.webp" alt="Divider" class="location-divider scroll-reveal-child" />
+      <h2 class="location-heading scroll-reveal-child">कार्यक्रम स्थळ</h2>
+      <p class="location-subtitle scroll-reveal-child">गणरायाच्या दर्शनासाठी आपले सहर्ष स्वागत आहे</p>
+
+      <div class="new-location-card scroll-reveal-child">
+        <div class="map-header">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121073.91939539721!2d73.8746239!3d18.5035801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1784097692102!5m2!1sen!2sin" 
+            title="देशपांडे निवास" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            style="border:0;">
+          </iframe>
+        </div>
+        <div class="location-details">
+          <h3>देशपांडे निवास</h3>
+          <p class="address-text">फ्लॅट नं. ४०२, श्री गणेशा अपार्टमेंट्स, शिवाजीनगर पुणे - ४११००५</p>
+          <a class="new-maps-btn" href="https://maps.app.goo.gl/eYGw44jxYZum2ECCA" target="_blank" rel="noopener noreferrer" id="openMapsBtn">Open Maps</a>
+          <p class="footer-msg">
+            <span>आपल्या सहकुटुंब उपस्थितीने</span><br />
+            <span>उत्सवाची शोभा वाढेल</span>
+          </p>
+        </div>
+      </div>
+
+      <img src="assets/divider-1-CA7Shuxn.webp" alt="Divider" class="location-divider bottom-divider scroll-reveal-child" />
+    </section>
+
+    <!-- Blessings Section (बाप्पाचे आशीर्वाद) -->
+    <section class="ashirwad-section scroll-reveal" id="ashirwadSection">
+      <div class="royal-frame"></div>
+      <img src="assets/divider-1-CA7Shuxn.webp" alt="Divider" class="ashirwad-divider scroll-reveal-child" />
+      <h2 class="ashirwad-heading scroll-reveal-child">बाप्पाचे आशीर्वाद</h2>
+      <p class="ashirwad-subtitle scroll-reveal-child">स्पर्श करा आणि बाप्पांचे मंगल आशीर्वाद प्राप्त करा</p>
+
+      <div class="ashirwad-stage scroll-reveal-child" id="ashirwadStage">
+        <img src="assets/murti-2-luqKOqyF.webp" alt="" class="murti-bg" />
+        <div class="murti-aura"></div>
+        <img src="assets/murti-2-luqKOqyF.webp" alt="Lord Ganesha" class="murti-main" id="murtiMain" />
+        <div class="floating-particles"></div>
+        <div class="sacred-dust" id="sacredDust">
+          <!-- 14 Sacred dust particles generated by JS -->
+        </div>
+      </div>
+
+      <p class="tap-note scroll-reveal-child">बाप्पांच्या चरणी भक्तीपूर्वक फुलांची अर्पण करा</p>
+      <button class="flower-btn scroll-reveal-child" id="flowerBtn" type="button">फुलांची वर्षाव करा</button>
+    </section>
+
+    <!-- Gallery Section (आगमनाची तयारी) -->
+    <section class="gallery-section scroll-reveal" id="gallerySection">
+      <img src="assets/divider-1-CA7Shuxn.webp" alt="Divider" class="gallery-divider scroll-reveal-child" />
+      <h2 class="gallery-heading scroll-reveal-child">आगमनाची तयारी</h2>
+      <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="gallery-small-divider scroll-reveal-child" />
+      <p class="gallery-subtitle scroll-reveal-child">
+        <span>गणरायाच्या स्वागतासाठी</span><br />
+        <span>प्रेमाने सजवलेले काही खास क्षण</span>
+      </p>
+
+      <div class="gallery-grid scroll-reveal-child">
+        <div class="gallery-item large">
+          <img src="assets/gallery-1-DWEzcB6M.webp" alt="Gallery 1" loading="eager" />
+        </div>
+        <div class="gallery-item">
+          <img src="assets/gallery-2-DvEhGxIV.webp" alt="Gallery 2" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="assets/gallery-3-CV0LwziS.webp" alt="Gallery 3" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="assets/gallery-4-sv5dpAxi.webp" alt="Gallery 4" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="assets/gallery-5-DpPEX2vC.webp" alt="Gallery 5" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Sacred Footer -->
+    <footer class="sacred-footer scroll-reveal" id="footerSection">
+      <div class="footer-fade"></div>
+      <img src="assets/diva2-Cj74hIfe.webp" alt="" class="footer-diya-left" />
+      <img src="assets/aarti-BmqCfmT2.webp" alt="" class="footer-aarti-left" />
+      <img src="assets/divider-2-B5AQ9qpj.webp" alt="Divider" class="footer-divider scroll-reveal-child" />
+      <h2 class="footer-quote scroll-reveal-child">
+        आपली उपस्थिती हेच आमच्यासाठी बाप्पांचे खरे<br />
+        आशीर्वाद आहेत.
+      </h2>
+      <div class="footer-family scroll-reveal-child">— श्री साई गणेश मंडळ</div>
+      <div class="footer-brand scroll-reveal-child">
+        <a href="https://www.instagram.com/invi.digitals" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">
+          Crafted by INVI DIGITALS
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- JavaScript for Interactions & Audio -->
+  <script src="script.js"></script>
+</body>
+</html>
