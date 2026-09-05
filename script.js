@@ -208,137 +208,21 @@ document.addEventListener('DOMContentLoaded', () => {
   curtainSealBtn.addEventListener('click', openCurtain);
 
   // ==========================================
-  // 4. Family 3D Slider Carousel
+  // 4. Family Continuous Marquee Interaction
   // ==========================================
-  const familySlider = document.getElementById('familySlider');
-  const familyCards = familySlider ? Array.from(familySlider.querySelectorAll('.family-card')) : [];
-  const familyDots = document.getElementById('familyDots') ? Array.from(document.getElementById('familyDots').querySelectorAll('span')) : [];
-  const familyPrevBtn = document.getElementById('familyPrevBtn');
-  const familyNextBtn = document.getElementById('familyNextBtn');
+  const familyMarqueeWrapper = document.getElementById('familyMarqueeWrapper');
+  const familyMarqueeTrack = document.getElementById('familyMarqueeTrack');
   
-  let currentFamilyIndex = 0;
-  const familyTotal = familyCards.length;
-
-  function updateFamilySlider(index) {
-    if (!familyTotal) return;
-    currentFamilyIndex = (index % familyTotal + familyTotal) % familyTotal;
-    const prevIdx = (currentFamilyIndex - 1 + familyTotal) % familyTotal;
-    const nextIdx = (currentFamilyIndex + 1) % familyTotal;
-
-    familyCards.forEach((card, idx) => {
-      card.classList.remove('active', 'prev', 'next');
-      if (idx === currentFamilyIndex) {
-        card.classList.add('active');
-      } else if (idx === prevIdx) {
-        card.classList.add('prev');
-      } else if (idx === nextIdx) {
-        card.classList.add('next');
-      }
-    });
-
-    familyDots.forEach((dot, idx) => {
-      if (idx === currentFamilyIndex) {
-        dot.classList.add('active');
-      } else {
-        dot.classList.remove('active');
-      }
-    });
-  }
-
-  // Card click handlers
-  familyCards.forEach((card, idx) => {
-    card.addEventListener('click', () => {
-      if (card.classList.contains('prev')) {
-        updateFamilySlider(currentFamilyIndex - 1);
-        startFamilyAutoSlide();
-      } else if (card.classList.contains('next')) {
-        updateFamilySlider(currentFamilyIndex + 1);
-        startFamilyAutoSlide();
-      }
-    });
-  });
-
-  // Continuous Auto Slider (Left to Right / Loop)
-  let familyAutoSlideTimer = null;
-  function startFamilyAutoSlide() {
-    stopFamilyAutoSlide();
-    familyAutoSlideTimer = setInterval(() => {
-      updateFamilySlider(currentFamilyIndex + 1);
-    }, 2800);
-  }
-
-  function stopFamilyAutoSlide() {
-    if (familyAutoSlideTimer) {
-      clearInterval(familyAutoSlideTimer);
-      familyAutoSlideTimer = null;
-    }
-  }
-
-  startFamilyAutoSlide();
-
-  if (familySlider) {
-    familySlider.addEventListener('mouseenter', stopFamilyAutoSlide);
-    familySlider.addEventListener('mouseleave', startFamilyAutoSlide);
-  }
-
-  if (familyPrevBtn) {
-    familyPrevBtn.addEventListener('click', () => {
-      updateFamilySlider(currentFamilyIndex - 1);
-      startFamilyAutoSlide();
-    });
-  }
-
-  if (familyNextBtn) {
-    familyNextBtn.addEventListener('click', () => {
-      updateFamilySlider(currentFamilyIndex + 1);
-      startFamilyAutoSlide();
-    });
-  }
-
-  familyDots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => {
-      updateFamilySlider(idx);
-      startFamilyAutoSlide();
-    });
-  });
-
-  // Touch Swipe for Family Slider
-  let touchStartX = 0;
-  let touchStartY = 0;
-  let isSwiping = false;
-
-  if (familySlider) {
-    familySlider.addEventListener('touchstart', (e) => {
-      stopFamilyAutoSlide();
-      const touch = e.touches[0];
-      touchStartX = touch.clientX;
-      touchStartY = touch.clientY;
-      isSwiping = true;
+  if (familyMarqueeWrapper && familyMarqueeTrack) {
+    let isMarqueePaused = false;
+    
+    // Pause animation when user touches on mobile
+    familyMarqueeWrapper.addEventListener('touchstart', () => {
+      familyMarqueeTrack.style.animationPlayState = 'paused';
     }, { passive: true });
 
-    familySlider.addEventListener('touchmove', (e) => {
-      if (!isSwiping) return;
-      const touch = e.touches[0];
-      const diffX = touch.clientX - touchStartX;
-      const diffY = touch.clientY - touchStartY;
-      if (Math.abs(diffY) > Math.abs(diffX)) {
-        isSwiping = false; // vertical scroll, ignore
-      }
-    }, { passive: true });
-
-    familySlider.addEventListener('touchend', (e) => {
-      if (!isSwiping) return;
-      const touch = e.changedTouches[0];
-      const diffX = touch.clientX - touchStartX;
-      if (Math.abs(diffX) >= 50) {
-        if (diffX < 0) {
-          updateFamilySlider(currentFamilyIndex + 1);
-        } else {
-          updateFamilySlider(currentFamilyIndex - 1);
-        }
-      }
-      isSwiping = false;
-      startFamilyAutoSlide();
+    familyMarqueeWrapper.addEventListener('touchend', () => {
+      familyMarqueeTrack.style.animationPlayState = 'running';
     }, { passive: true });
   }
 
