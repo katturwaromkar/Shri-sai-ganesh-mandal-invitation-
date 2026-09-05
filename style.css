@@ -1010,22 +1010,44 @@ to {
   border-radius:24px
 }
 .member-name {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding:22px 0 12px
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 4px 10px;
 }
 .member-name img {
-  width:24px
+  width: 22px;
+  flex-shrink: 0;
 }
-.member-name span {
-  font-family:"Noto Serif Devanagari","Tiro Devanagari Marathi",serif;
-  font-size:1.45rem;
-  font-weight:700;
-  color:#3e1602;
-  text-shadow:none;
-  letter-spacing:.2px
+.member-text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+}
+.member-name-text {
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: clamp(1.15rem, 4.2vw, 1.35rem);
+  font-weight: 700;
+  color: #3e1602;
+  line-height: 1.25;
+  letter-spacing: .2px;
+}
+.member-designation {
+  display: inline-block;
+  font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
+  font-size: clamp(0.78rem, 3.2vw, 0.88rem);
+  font-weight: 600;
+  color: #7e3812;
+  background: linear-gradient(135deg, rgba(234, 215, 188, 0.9), rgba(217, 193, 160, 0.8));
+  border: 1px solid rgba(161, 79, 27, 0.35);
+  padding: 2px 14px;
+  border-radius: 999px;
+  box-shadow: 0 2px 5px rgba(91, 38, 7, 0.1);
+  letter-spacing: 0.3px;
 }
 .family-btn {
   position:absolute;
