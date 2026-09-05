@@ -208,22 +208,129 @@ document.addEventListener('DOMContentLoaded', () => {
   curtainSealBtn.addEventListener('click', openCurtain);
 
   // ==========================================
-  // 4. Family Continuous Marquee Interaction
+  // 4. Family Single Parallel Line Touch-Slide & Marquee Engine
   // ==========================================
   const familyMarqueeWrapper = document.getElementById('familyMarqueeWrapper');
   const familyMarqueeTrack = document.getElementById('familyMarqueeTrack');
   
   if (familyMarqueeWrapper && familyMarqueeTrack) {
-    let isMarqueePaused = false;
-    
-    // Pause animation when user touches on mobile
-    familyMarqueeWrapper.addEventListener('touchstart', () => {
-      familyMarqueeTrack.style.animationPlayState = 'paused';
+    let currentX = 0;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let dragStartX = 0;
+    let isHorizontalSwipe = null;
+    let groupWidth = 0;
+    const scrollSpeed = 0.75; // px per frame (gentle Left-to-Right)
+
+    function updateGroupWidth() {
+      const firstGroup = familyMarqueeTrack.querySelector('.family-marquee-group');
+      if (firstGroup) {
+        groupWidth = firstGroup.offsetWidth;
+      }
+    }
+
+    updateGroupWidth();
+    window.addEventListener('resize', updateGroupWidth);
+    window.addEventListener('load', updateGroupWidth);
+
+    function step() {
+      if (!isDragging && groupWidth > 0) {
+        currentX += scrollSpeed;
+        if (currentX >= 0) {
+          currentX -= groupWidth;
+        } else if (currentX <= -groupWidth) {
+          currentX += groupWidth;
+        }
+        familyMarqueeTrack.style.transform = `translate3d(${currentX}px, 0, 0)`;
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Set initial position
+    if (groupWidth > 0) {
+      currentX = -groupWidth / 2;
+    }
+    requestAnimationFrame(step);
+
+    // Touch events for mobile sliding
+    familyMarqueeWrapper.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        dragStartX = currentX;
+        isHorizontalSwipe = null;
+      }
     }, { passive: true });
 
-    familyMarqueeWrapper.addEventListener('touchend', () => {
-      familyMarqueeTrack.style.animationPlayState = 'running';
+    familyMarqueeWrapper.addEventListener('touchmove', (e) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      const x = e.touches[0].clientX;
+      const y = e.touches[0].clientY;
+      const deltaX = x - startX;
+      const deltaY = y - startY;
+
+      if (isHorizontalSwipe === null) {
+        if (Math.abs(deltaX) > 6 || Math.abs(deltaY) > 6) {
+          isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
+        }
+      }
+
+      if (isHorizontalSwipe) {
+        currentX = dragStartX + deltaX;
+        if (groupWidth > 0) {
+          while (currentX > 0) currentX -= groupWidth;
+          while (currentX < -groupWidth) currentX += groupWidth;
+        }
+        familyMarqueeTrack.style.transform = `translate3d(${currentX}px, 0, 0)`;
+      }
     }, { passive: true });
+
+    function endTouchDrag() {
+      if (isDragging) {
+        isDragging = false;
+        isHorizontalSwipe = null;
+      }
+    }
+
+    familyMarqueeWrapper.addEventListener('touchend', endTouchDrag, { passive: true });
+    familyMarqueeWrapper.addEventListener('touchcancel', endTouchDrag, { passive: true });
+
+    // Desktop mouse drag & hover pause
+    let isMouseDown = false;
+    familyMarqueeWrapper.addEventListener('mousedown', (e) => {
+      isMouseDown = true;
+      isDragging = true;
+      startX = e.clientX;
+      dragStartX = currentX;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isMouseDown) return;
+      const deltaX = e.clientX - startX;
+      currentX = dragStartX + deltaX;
+      if (groupWidth > 0) {
+        while (currentX > 0) currentX -= groupWidth;
+        while (currentX < -groupWidth) currentX += groupWidth;
+      }
+      familyMarqueeTrack.style.transform = `translate3d(${currentX}px, 0, 0)`;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isMouseDown) {
+        isMouseDown = false;
+        isDragging = false;
+      }
+    });
+
+    familyMarqueeWrapper.addEventListener('mouseenter', () => {
+      if (!isMouseDown) isDragging = true;
+    });
+
+    familyMarqueeWrapper.addEventListener('mouseleave', () => {
+      if (!isMouseDown) isDragging = false;
+    });
   }
 
   // ==========================================

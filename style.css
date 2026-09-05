@@ -959,53 +959,51 @@ to {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
-  margin: 25px 0 35px;
+  margin: 20px 0 30px;
   padding: 25px 0 35px;
   display: flex;
   user-select: none;
   -webkit-user-select: none;
+  cursor: grab;
+  touch-action: pan-y pinch-zoom;
+}
+.family-marquee-wrapper:active {
+  cursor: grabbing;
 }
 .family-marquee-track {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   width: max-content;
   gap: 0;
-  animation: scrollMarqueeLeftToRight 36s linear infinite;
   will-change: transform;
-}
-.family-marquee-wrapper:hover .family-marquee-track,
-.family-marquee-wrapper:active .family-marquee-track {
-  animation-play-state: paused;
 }
 .family-marquee-group {
   display: flex;
-  gap: 24px;
-  padding-right: 24px;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 20px;
+  padding-right: 20px;
+  align-items: stretch;
   flex-shrink: 0;
 }
 .family-card {
   position: relative;
-  width: clamp(235px, 68vw, 280px);
+  width: clamp(215px, 62vw, 265px);
   flex-shrink: 0;
   background: #f2dab3;
-  border-radius: 28px;
+  border-radius: 26px;
   padding: 12px;
-  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.32), 0 0 0 1.5px rgba(255, 212, 138, 0.3);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3), 0 0 0 1.5px rgba(255, 212, 138, 0.35);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   user-select: none;
+  display: flex;
+  flex-direction: column;
 }
 .family-card:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.42), 0 0 0 2px rgba(255, 212, 138, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 212, 138, 0.5);
   z-index: 10;
-}
-@keyframes scrollMarqueeLeftToRight {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
 }
 .member-img {
   width: 100%;
@@ -2362,14 +2360,7 @@ to {
 .timeline-row.row-right .utsav-tile {
   left:calc(50% + 40px)
 }
-.family-card.prev {
-  transform:translateX(-55%) scale(.88) rotate(-3deg);
-  opacity:.65
-}
-.family-card.next {
-  transform:translateX(55%) scale(.88) rotate(3deg);
-  opacity:.65
-}
+
 .gallery-grid {
   max-width:600px;
   margin-inline:auto
@@ -2417,18 +2408,7 @@ to {
 }
 }
 @media(min-width:1024px) {
-  .family-slider {
-  width:620px;
-  margin:auto
-}
-.family-card.prev {
-  transform:translateX(-52%) scale(.9) rotate(-2deg);
-  opacity:.7
-}
-.family-card.next {
-  transform:translateX(52%) scale(.9) rotate(2deg);
-  opacity:.7
-}
+
 .toplayer {
   width:111%;
   margin-top:-90px
