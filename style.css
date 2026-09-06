@@ -1017,29 +1017,60 @@ to {
   position: relative;
   width: 100%;
   max-width: 320px;
-  background: linear-gradient(160deg, #fffdf8 0%, #fcf3e3 45%, #f5dfbe 100%);
-  border: 1.5px solid #d4af37;
+  background: linear-gradient(155deg, #fffdf8 0%, #fcf4e8 45%, #f7e6ce 100%);
+  border: 2px solid #d4af37;
   border-radius: 24px;
-  padding: 14px 14px 18px;
+  padding: 16px 14px 20px;
   box-shadow: 
-    0 12px 30px rgba(50, 18, 4, 0.32),
-    0 4px 10px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 0 16px rgba(212, 175, 55, 0.15);
+    0 14px 34px rgba(50, 18, 4, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.95),
+    inset 0 0 20px rgba(212, 175, 55, 0.2);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease;
   user-select: none;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  overflow: hidden;
+}
+.family-card::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 19px;
+  pointer-events: none;
+  z-index: 1;
+}
+.family-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  transform: rotate(25deg) translateY(-120%);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+  z-index: 3;
 }
 .family-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   box-shadow: 
-    0 22px 45px rgba(50, 18, 4, 0.42),
-    0 0 24px rgba(230, 179, 90, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 1),
-    inset 0 0 20px rgba(212, 175, 55, 0.25);
-  border-color: #e6b35a;
+    0 24px 48px rgba(50, 18, 4, 0.45),
+    0 0 28px rgba(230, 179, 90, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 1),
+    inset 0 0 24px rgba(212, 175, 55, 0.3);
+  border-color: #f3ca65;
+}
+.family-card:hover::after {
+  transform: rotate(25deg) translateY(120%);
 }
 /* Ensure 1 column on all screen sizes */
 @media (min-width: 640px) {
@@ -1060,43 +1091,122 @@ to {
     gap: 38px;
   }
 }
-.member-img {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 18px;
-  border: 2px solid #dfc083;
-  box-shadow: 0 4px 12px rgba(60, 22, 6, 0.2);
-  transition: transform 0.45s ease;
-  background-color: #2a1104;
+
+/* Corner Filigrees */
+.card-filigree {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 2;
+  pointer-events: none;
+  border-color: #c99320;
+  border-style: solid;
 }
-.family-card:hover .member-img {
-  transform: scale(1.02);
+.card-filigree--tl {
+  top: 9px;
+  left: 9px;
+  border-width: 2px 0 0 2px;
+  border-top-left-radius: 7px;
 }
-.member-name {
+.card-filigree--tr {
+  top: 9px;
+  right: 9px;
+  border-width: 2px 2px 0 0;
+  border-top-right-radius: 7px;
+}
+.card-filigree--bl {
+  bottom: 9px;
+  left: 9px;
+  border-width: 0 0 2px 2px;
+  border-bottom-left-radius: 7px;
+}
+.card-filigree--br {
+  bottom: 9px;
+  right: 9px;
+  border-width: 0 2px 2px 0;
+  border-bottom-right-radius: 7px;
+}
+
+/* Royal Crown Top Header */
+.card-royal-crown {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 14px 4px 6px;
+  gap: 8px;
+  margin-bottom: 10px;
   position: relative;
   z-index: 2;
 }
-.member-name img {
-  width: 22px;
-  height: auto;
-  flex-shrink: 0;
-  filter: drop-shadow(0 2px 4px rgba(91, 38, 7, 0.25));
-  opacity: 0.9;
+.crown-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.7), transparent);
 }
-.member-text-wrap {
+.crown-symbol {
+  color: #c99320;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 1px 3px rgba(184, 134, 11, 0.35));
+}
+.crown-symbol svg {
+  color: #c99320;
+}
+
+/* Photo Frame */
+.member-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(45, 14, 3, 0.25);
+  border: 2px solid #dfc083;
+  background-color: #2a1104;
+  z-index: 2;
+}
+.member-photo-frame .member-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  display: block;
+}
+.family-card:hover .member-photo-frame .member-img {
+  transform: scale(1.035);
+}
+.photo-frame-border {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+  pointer-events: none;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Member Info Box */
+.member-info-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  text-align: center;
+  gap: 8px;
+  padding: 14px 4px 4px;
+  position: relative;
+  z-index: 2;
+}
+.member-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.royal-accent {
+  color: #c48b28;
+  font-size: 0.95rem;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(196, 139, 40, 0.3);
 }
 .member-name-text {
   font-family: "Noto Serif Devanagari", "Tiro Devanagari Marathi", serif;
@@ -1105,7 +1215,12 @@ to {
   color: #3b1402;
   line-height: 1.25;
   letter-spacing: 0.2px;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+.member-designation-wrap {
+  display: flex;
+  justify-content: center;
 }
 .member-designation {
   display: inline-block;
@@ -1114,11 +1229,21 @@ to {
   font-weight: 600;
   color: #fff9e8;
   background: linear-gradient(135deg, #8a2408 0%, #a8350d 50%, #6d1a04 100%);
-  border: 1px solid #dfb15b;
-  padding: 3px 16px;
+  border: 1.2px solid #dfb15b;
+  padding: 4px 18px;
   border-radius: 999px;
-  box-shadow: 0 2px 6px rgba(109, 26, 4, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.35);
-  letter-spacing: 0.4px;
+  box-shadow: 
+    0 2px 8px rgba(109, 26, 4, 0.32),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.family-card:hover .member-designation {
+  transform: scale(1.04);
+  box-shadow: 
+    0 3px 12px rgba(168, 53, 13, 0.45),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 .family-bottom-text {
   color:#fff;
@@ -1174,40 +1299,7 @@ to {
 .custom-shape-divider-bottom .shape-fill {
   fill:#9a4e1a
 }
-.card-flower {
-  position: absolute;
-  top: -10px;
-  width: clamp(55px, 14vw, 75px);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-  transform-origin: top center;
-  z-index: 10;
-  pointer-events: none;
-  opacity: 0.9;
-}
-.card-flower.left {
-  left: -16px;
-  animation: gentleWaveLeft 4s ease-in-out infinite;
-}
-.card-flower.right {
-  right: -16px;
-  animation: gentleWaveRight 4s ease-in-out infinite;
-}
-@keyframes gentleWaveLeft {
-  0%,to {
-  transform:rotate(-3deg)
-}
-50% {
-  transform:rotate(5deg)
-}
-}
-@keyframes gentleWaveRight {
-  0%,to {
-  transform:scaleX(-1) rotate(5deg)
-}
-50% {
-  transform:scaleX(-1) rotate(-3deg)
-}
-}
+
 .card-top-flourish {
   position:absolute;
   top:-25px;
